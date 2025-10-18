@@ -1,0 +1,27 @@
+// filepath: apps/api/prisma/schema.prisma
+// Prisma schema for Protekt MVP: Org and User models.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Org {
+  id        String  @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  users     User[]
+}
+
+model User {
+  id           String  @id @default(cuid())
+  email        String  @unique
+  passwordHash String
+  role         String  @default("MEMBER")
+  orgId        String
+  org          Org     @relation(fields: [orgId], references: [id])
+  createdAt    DateTime @default(now())
+}

@@ -1,0 +1,22 @@
+# Core dependencies
+requests>=2.31.0
+psutil>=5.9.0
+cryptography>=41.0.0
+schedule>=1.2.0
+watchdog>=3.0.0
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Database and storage
+boto3>=1.28.0  # For S3 uploads
+
+# Security and monitoring
+pycryptodome>=3.18.0
+
+# Machine learning
+joblib>=1.3.0  # For model persistence
+
+# Note: The following are built-in Python modules and don't need to be installed:
+# sqlite3, hashlib, json, datetime, threading, logging, configparser, 
+# pathlib, subprocess, platform, socket, uuid, base64, zipfile, tarfile

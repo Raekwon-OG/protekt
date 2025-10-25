@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import './styles/globals.css';
 import App from './App';
+import './styles/globals.css';
 
 const rootEl = document.getElementById('root')!;
 createRoot(rootEl).render(

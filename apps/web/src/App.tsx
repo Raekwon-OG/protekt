@@ -7,12 +7,21 @@ import './styles/globals.css';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<'dashboard' | 'email-security'>('dashboard');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="layout">
-      <Sidebar activePage={page} onNavigate={(p) => setPage(p as any)} />
+      <Sidebar
+        activePage={page}
+        onNavigate={(p) => {
+          setPage(p as any);
+          setSidebarOpen(false); // auto-close on mobile when navigating
+        }}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
       <div className="main">
-        <Topbar />
+        <Topbar onOpenSidebar={() => setSidebarOpen(true)} />
         <div className="container">
           {page === 'dashboard' && <Dashboard />}
           {page === 'email-security' && <EmailSecurity />}

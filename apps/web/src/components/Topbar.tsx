@@ -1,19 +1,29 @@
 import React from 'react';
 
-const Topbar: React.FC = () => {
+type Props = {
+  onOpenSidebar?: () => void;
+};
+
+const Topbar: React.FC<Props> = ({ onOpenSidebar }) => {
   return (
-    <header className="topbar">
-      <div className="left">
+    <div className="topbar">
+      <button
+        className="hamburger"
+        onClick={onOpenSidebar}
+        aria-label="Open menu"
+        title="Open menu"
+      >
+        ☰
+      </button>
+      <div className="topbar-right">
         <select className="org-select">
           <option>Acme Solutions Ltd</option>
           <option>Demo Org</option>
         </select>
-      </div>
-      <div className="right">
         <button className="icon-btn">🔔</button>
         <div className="avatar">JD</div>
       </div>
-    </header>
+    </div>
   );
 };
 

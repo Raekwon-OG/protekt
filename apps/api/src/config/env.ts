@@ -13,6 +13,7 @@ const envSchema = z.object({
   PORT: z.preprocess((v) => (v ? Number(v) : 4000), z.number().int().positive()).optional(),
   CORS_ORIGIN: z.string().optional().default('*'),
   SAFE_BROWSING_KEY: z.string().optional(),
+  VIRUSTOTAL_KEY: z.string().optional(),
   NODE_ENV: z.string().optional(),
 });
 
@@ -30,5 +31,8 @@ export const configuration = {
   PORT: Number(process.env.PORT || 4000),
   CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
   SAFE_BROWSING_KEY: process.env.SAFE_BROWSING_KEY || '',
+  VIRUSTOTAL_KEY: process.env.VIRUSTOTAL_KEY || '',
   NODE_ENV: process.env.NODE_ENV || 'development',
+  VIRUSTOTAL_POLL_INTERVAL: Number(process.env.VIRUSTOTAL_POLL_INTERVAL) || 2000,
+  VIRUSTOTAL_POLL_TIMEOUT: Number(process.env.VIRUSTOTAL_POLL_TIMEOUT) || 15000,
 };

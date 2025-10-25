@@ -25,3 +25,18 @@ model User {
   org          Org     @relation(fields: [orgId], references: [id])
   createdAt    DateTime @default(now())
 }
+
+model EmailScanLog {
+  id             String   @id @default(cuid())
+  from           String?
+  subject        String?
+  text           String?
+  urls           Json
+  verdictSummary String
+  phishingCount  Int      @default(0)
+  details        Json
+  orgId          String?      // optional if you may not have org context
+  createdByUserId String?     // optional — remove if not in schema
+  createdAt      DateTime @default(now())
+}
+

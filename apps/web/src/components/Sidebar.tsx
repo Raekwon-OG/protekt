@@ -15,32 +15,21 @@ const Sidebar: React.FC<Props> = ({ activePage = 'dashboard', onNavigate, isOpen
 
   return (
     <>
-      {/* overlay for mobile when sidebar is open */}
       <div
         className={`mobile-sidebar-overlay ${isOpen ? 'visible' : ''}`}
         onClick={onClose}
         aria-hidden={!isOpen}
       />
 
-      <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+      <aside className={`sidebar ${isOpen ? 'open' : ''}`} role="navigation" aria-hidden={!isOpen && window.innerWidth <= 720}>
         <div className="brand">
           <div className="logo">P</div>
           <div className="brand-text">Protekt</div>
         </div>
 
         <ul className="nav">
-          <li
-            className={`nav-item ${activePage === 'dashboard' ? 'active' : ''}`}
-            onClick={nav('dashboard')}
-          >
-            Dashboard
-          </li>
-          <li
-            className={`nav-item ${activePage === 'email-security' ? 'active' : ''}`}
-            onClick={nav('email-security')}
-          >
-            Email Security
-          </li>
+          <li className={`nav-item ${activePage === 'dashboard' ? 'active' : ''}`} onClick={nav('dashboard')}>Dashboard</li>
+          <li className={`nav-item ${activePage === 'email-security' ? 'active' : ''}`} onClick={nav('email-security')}>Email Security</li>
           <li className="nav-item">Devices</li>
           <li className="nav-item">Alerts</li>
           <li className="nav-item">Scans &amp; Threats</li>

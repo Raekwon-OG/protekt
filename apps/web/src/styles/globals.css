@@ -94,8 +94,92 @@ body {
 
 /* mobile: collapse sidebar and add top spacing */
 @media (max-width: 720px) {
-  .sidebar { display:none; }
+  .sidebar {
+    /* mobile: off-canvas by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    padding: 20px;
+    transform: translateX(-110%);
+    background: var(--panel);
+    box-shadow: 0 18px 40px rgba(2,6,23,0.18);
+    border-right: 1px solid var(--border);
+    z-index: 70;
+  }
+
+  /* when open, slide in */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* make overlay visible when open (overlay toggles 'visible' class) */
+  .mobile-sidebar-overlay {
+    display: block;
+    opacity: 0;
+    transition: opacity 160ms ease;
+    z-index: 60;
+  }
+  .mobile-sidebar-overlay.visible { opacity: 1; }
+
+  /* content spacing adjustments */
   .topbar { padding-left: 12px; padding-right: 12px; }
   .container { padding: 12px; }
-  .page-header h1 { font-size:22px; }
+  .page-header h1 { font-size: 22px; }
+}
+
+/* Topbar hamburger (bigger tappable area) */
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #1f2937;
+  transition: background 120ms ease, transform 100ms ease;
+  margin-right: 8px;
+}
+.hamburger-btn:active { transform: scale(0.98); }
+.hamburger-btn:hover { background: rgba(2,6,23,0.04); }
+
+/* show hamburger on mobile and small widths */
+@media (max-width: 900px) {
+  .hamburger-btn { display: inline-flex; }
+}
+
+/* overlay improvements */
+.mobile-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.45);
+  z-index: 60;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+.mobile-sidebar-overlay.visible { display: block; opacity: 1; cursor: pointer; }
+
+/* ensure sidebar appears above overlay visually */
+.sidebar {
+  z-index: 70;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* mobile sidebar - more spacing and wider, easier to tap */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 300px;
+    padding: 24px;
+  }
+  .nav-item { padding: 14px 12px; font-size: 16px; }
+}
+
+/* ensure left nav remains visible on larger screens */
+@media (min-width: 721px) {
+  .sidebar { display: block; position: relative; transform: translateX(0) !important; }
 }

@@ -15,7 +15,7 @@ const App: React.FC = () => {
         activePage={page}
         onNavigate={(p) => {
           setPage(p as any);
-          setSidebarOpen(false); // auto-close on mobile when navigating
+          setSidebarOpen(false);
         }}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}

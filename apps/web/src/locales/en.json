@@ -1,0 +1,77 @@
+{
+  "appName": "Protekt",
+  "welcome": "Welcome back",
+  "signIn": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "remember": "Remember me",
+  "orContinueWith": "OR CONTINUE WITH",
+  "dontHaveAccount": "Don't have an account? Sign up",
+  "features": {
+    "headline": "Enterprise-grade security for African businesses",
+    "sub": "Protect your digital assets with AI-powered threat detection and 24/7 security operations.",
+    "a": "Advanced Threat Protection",
+    "b": "Built for Africa",
+    "c": "Team Collaboration"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "emailSecurity": "Email Security",
+    "devices": "Devices",
+    "alerts": "Alerts",
+    "scans": "Scans & Threats",
+    "backups": "Backups",
+    "compliance": "Compliance",
+    "activityLog": "Activity Log"
+  },
+  "sidebar": {
+    "status": "All Systems Operational",
+    "lastScan": "Last scan: 2 minutes ago"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome back! Here's what's happening with your security today.",
+    "threatActivity": "Threat Activity (24h)",
+    "recentActivity": "Recent Activity"
+  },
+  "stats": {
+    "devicesOnline": "Devices Online",
+    "activeAlerts": "Active Alerts",
+    "backupsToday": "Backups Today",
+    "complianceScore": "Compliance Score"
+  },
+  "recent": {
+    "backup": "Backup completed for SERVER-DB-01",
+    "ago2min": "2 minutes ago",
+    "highCpu": "High CPU usage detected on LAPTOP-DEV-05",
+    "ago15min": "15 minutes ago",
+    "failedLogin": "Failed login attempt from unknown IP",
+    "ago32min": "32 minutes ago",
+    "update": "System update available for 12 devices",
+    "ago1hour": "1 hour ago",
+    "emailScan": "Email scan completed - 245 messages scanned",
+    "ago2hours": "2 hours ago"
+  },
+  "actions": {
+    "addDevice": "Add New Device",
+    "addDeviceSub": "Install agent and start monitoring",
+    "runScan": "Run Security Scan",
+    "runScanSub": "Scan all devices for vulnerabilities",
+    "createBackup": "Create Backup",
+    "createBackupSub": "Backup critical systems now"
+  },
+  "emailPage": {
+    "title": "Email Security",
+    "subtitle": "Inbound email processing, link checking, and scan logs."
+  },
+  "devices": {
+    "subtitle": "Monitor and manage all connected devices",
+    "addDevice": "Add Device",
+    "colName": "Device Name",
+    "colType": "Type",
+    "colLastSeen": "Last Seen",
+    "colRisk": "Risk Level",
+    "colAgent": "Agent Version",
+    "colStatus": "Status"
+  }
+}

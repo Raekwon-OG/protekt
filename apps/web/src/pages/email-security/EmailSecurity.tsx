@@ -1,30 +1,22 @@
 import React from 'react';
-import SafeLinkChecker from '../../components/EmailSecurity/SafeLinkChecker';
+import { useTranslation } from 'react-i18next';
 import InboundEmailLog from '../../components/EmailSecurity/InboundEmailLog';
-import StatsCard from '../../components/StatsCard';
+import SafeLinkChecker from '../../components/EmailSecurity/SafeLinkChecker';
 
 const EmailSecurity: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div>
-      <header className="page-header">
-        <h1>Email Security</h1>
-        <p className="subtitle">Monitor inbound emails and scan URLs for threats</p>
-      </header>
+      <h1>{t('emailPage.title')}</h1>
+      <p className="muted">{t('emailPage.subtitle')}</p>
 
-      <section className="stats-grid" style={{ marginBottom: 24 }}>
-        <StatsCard title="Emails Scanned" value="478" />
-        <StatsCard title="Clean" value="452" />
-        <StatsCard title="Spam/Phishing" value="24" variant="warning" />
-        <StatsCard title="Malicious" value="2" variant="neutral" />
-      </section>
-
-      <section style={{ marginBottom: 20 }}>
+      <div style={{ marginTop: 18 }}>
         <SafeLinkChecker />
-      </section>
+      </div>
 
-      <section>
+      <div style={{ marginTop: 18 }}>
         <InboundEmailLog />
-      </section>
+      </div>
     </div>
   );
 };

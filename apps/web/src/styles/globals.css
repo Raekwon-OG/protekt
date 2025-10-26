@@ -183,3 +183,121 @@ body {
 @media (min-width: 721px) {
   .sidebar { display: block; position: relative; transform: translateX(0) !important; }
 }
+
+/* add near top of file */
+.select-lang { border-radius: 8px; padding: 8px; border: 1px solid #eef2f7; }
+
+/* add these styles near the landing/hero section (or end of file) */
+
+/* Landing responsive layout */
+.landing-root {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* hero left */
+.landing-hero {
+  flex: 1;
+  min-width: 320px;
+  background: linear-gradient(180deg,#4f46e5,#3b82f6);
+  color: #fff;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+}
+.hero-inner { width: 100%; max-width: 620px; }
+
+.brand-row { display:flex; gap:12px; align-items:center; margin-bottom: 20px; }
+.logo { width:48px; height:48px; border-radius:12px; background: rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; font-weight:700; }
+.brand-title { font-weight:700; font-size:18px; }
+.brand-sub { font-size:12px; opacity:0.95; }
+
+/* hero content */
+.hero-headline { font-size:40px; line-height:1.04; margin: 18px 0; max-width: 560px; }
+.hero-sub { max-width:560px; opacity:0.95; margin-bottom:18px; }
+.hero-features { margin-top:20px; list-style:none; padding:0; color:rgba(255,255,255,0.95); }
+.hero-features li { margin-bottom:10px; }
+
+/* auth right column */
+.landing-auth {
+  width: 520px;
+  background: #fff;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.auth-top { display:flex; justify-content:space-between; align-items:center; }
+.auth-card { max-width: 420px; margin-top: 12px; }
+.social-btn { padding: 8px 12px; border-radius:8px; border:1px solid #eef2f7; background:#fff; }
+
+/* small footer certs */
+.auth-footer { text-align:center; color:#9aa4b2; margin-top: 16px; }
+.certs { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
+.cert { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid #eef2f7; }
+
+/* mobile adjustments */
+@media (max-width: 900px) {
+  .landing-root { flex-direction: column; }
+  .landing-hero { order: 0; padding: 28px; }
+  .hero-headline { font-size: 26px; }
+  .landing-auth { width: 100%; padding: 20px; }
+  .auth-card { max-width: 100%; margin: 0 auto; }
+  .logo { width:40px; height:40px; }
+  .select-lang { padding: 10px; border-radius:10px; }
+  .social-btn { flex:1; }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .hero-headline { font-size: 20px; }
+  .landing-hero { padding: 18px; }
+  .landing-auth { padding: 14px; }
+}
+
+/* add near other utilities */
+.action-menu {
+  position: absolute;
+  right: 12px;
+  top: 40px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  z-index: 80;
+  min-width: 160px;
+  transform-origin: top right;
+  animation: menuIn 180ms ease;
+  overflow: hidden;
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.action-menu button { width: 100%; text-align: left; padding: 10px 12px; border: 0; background: transparent; cursor: pointer; }
+.action-menu button:hover { background: #f8fafc; }
+
+/* ensure sidebar brand/logo is always visible and clearly sized */
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 16px;
+}
+.sidebar .logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#2563eb,#3b82f6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.brand-text { font-weight: 700; color: #0f172a; }
+
+/* make sure topbar doesn't duplicate the brand/logo */
+.topbar { z-index: 50; }

@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
-  activePage?: 'dashboard' | 'email-security';
-  onNavigate?: (page: 'dashboard' | 'email-security') => void;
+  activePage?: 'dashboard' | 'email-security' | 'devices';
+  onNavigate?: (page: 'dashboard' | 'email-security' | 'devices') => void;
   isOpen?: boolean;
   onClose?: () => void;
 };
 
 const Sidebar: React.FC<Props> = ({ activePage = 'dashboard', onNavigate, isOpen = false, onClose }) => {
-  const nav = (p: 'dashboard' | 'email-security') => () => {
+  const { t } = useTranslation();
+  const nav = (p: 'dashboard' | 'email-security' | 'devices') => () => {
     onNavigate && onNavigate(p);
     onClose && onClose();
   };
@@ -28,20 +30,20 @@ const Sidebar: React.FC<Props> = ({ activePage = 'dashboard', onNavigate, isOpen
         </div>
 
         <ul className="nav">
-          <li className={`nav-item ${activePage === 'dashboard' ? 'active' : ''}`} onClick={nav('dashboard')}>Dashboard</li>
-          <li className={`nav-item ${activePage === 'email-security' ? 'active' : ''}`} onClick={nav('email-security')}>Email Security</li>
-          <li className="nav-item">Devices</li>
-          <li className="nav-item">Alerts</li>
-          <li className="nav-item">Scans &amp; Threats</li>
-          <li className="nav-item">Backups</li>
-          <li className="nav-item">Compliance</li>
-          <li className="nav-item">Activity Log</li>
+          <li className={`nav-item ${activePage === 'dashboard' ? 'active' : ''}`} onClick={nav('dashboard')}>{t('nav.dashboard')}</li>
+          <li className={`nav-item ${activePage === 'devices' ? 'active' : ''}`} onClick={nav('devices')}>{t('nav.devices')}</li>
+          <li className={`nav-item ${activePage === 'email-security' ? 'active' : ''}`} onClick={nav('email-security')}>{t('nav.emailSecurity')}</li>
+          <li className="nav-item">{t('nav.alerts')}</li>
+          <li className="nav-item">{t('nav.scans')}</li>
+          <li className="nav-item">{t('nav.backups')}</li>
+          <li className="nav-item">{t('nav.compliance')}</li>
+          <li className="nav-item">{t('nav.activityLog')}</li>
         </ul>
 
         <div className="sidebar-status">
           <div className="status-dot online" />
-          <div>All Systems Operational</div>
-          <div className="muted small">Last scan: 2 minutes ago</div>
+          <div>{t('sidebar.status')}</div>
+          <div className="muted small">{t('sidebar.lastScan')}</div>
         </div>
       </aside>
     </>

@@ -1,0 +1,77 @@
+{
+  "appName": "Protekt",
+  "welcome": "Karibu tena",
+  "signIn": "Ingia",
+  "email": "Barua pepe",
+  "password": "Nenosiri",
+  "remember": "Nikumbuke",
+  "orContinueWith": "AU ENDELEA KWA",
+  "dontHaveAccount": "Huna akaunti? Jisajili",
+  "features": {
+    "headline": "Usalama wa kiwango cha biashara kwa biashara za Afrika",
+    "sub": "Linda mali zako za kidijitali kwa utambuzi wa vitisho unaotegemea AI na uendeshaji wa usalama 24/7.",
+    "a": "Ulinzi wa kina dhidi ya vitisho",
+    "b": "Imebuniwa kwa Afrika",
+    "c": "Ushirikiano wa timu"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "emailSecurity": "Usalama wa Barua",
+    "devices": "Vifaa",
+    "alerts": "Arifa",
+    "scans": "Skans & Vitisho",
+    "backups": "Nakala za Akiba",
+    "compliance": "Uzingatiaji",
+    "activityLog": "Daftari la Shughuli"
+  },
+  "sidebar": {
+    "status": "Mifumo yote inafanya kazi",
+    "lastScan": "Skana ya mwisho: dakika 2 zilizopita"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Karibu tena! Hapa ni kile kinachotokea leo.",
+    "threatActivity": "Shughuli ya vitisho (24h)",
+    "recentActivity": "Shughuli ya Hivi Punde"
+  },
+  "stats": {
+    "devicesOnline": "Vifaa Waliopo",
+    "activeAlerts": "Arifa Zinazofanya Kazi",
+    "backupsToday": "Nakili Leo",
+    "complianceScore": "Alama ya Uzingatiaji"
+  },
+  "recent": {
+    "backup": "Nakili imemalizika kwa SERVER-DB-01",
+    "ago2min": "dakika 2 zilizopita",
+    "highCpu": "Matumizi ya CPU ya juu yaligunduliwa kwenye LAPTOP-DEV-05",
+    "ago15min": "dakika 15 zilizopita",
+    "failedLogin": "Jaribio la kuingia liliwezawa kutoka IP isiyojulikana",
+    "ago32min": "dakika 32 zilizopita",
+    "update": "Mafunzo ya mfumo yanapatikana kwa vifaa 12",
+    "ago1hour": "saa 1 iliyopita",
+    "emailScan": "Uchunguzi wa barua umekamilika - ujumbe 245 ulisomwa",
+    "ago2hours": "saa 2 zilizopita"
+  },
+  "actions": {
+    "addDevice": "Ongeza Kifaa Kipya",
+    "addDeviceSub": "Sakinisha wakala na anza ufuatiliaji",
+    "runScan": "Endesha Ukaguzi wa Usalama",
+    "runScanSub": "Sakata vifaa vyote kwa udhaifu",
+    "createBackup": "Tengeneza Nakala ya Akiba",
+    "createBackupSub": "Nakili mifumo muhimu sasa"
+  },
+  "emailPage": {
+    "title": "Usalama wa Barua",
+    "subtitle": "Usindikaji wa barua ingizo, ukaguzi wa viungo, na kumbukumbu za uchunguzi."
+  },
+  "devices": {
+    "subtitle": "Dhibiti na fuatilia vifaa vyote vilivyounganishwa",
+    "addDevice": "Ongeza Kifaa",
+    "colName": "Jina la Kifaa",
+    "colType": "Aina",
+    "colLastSeen": "Iliyotazamwa Mwisho",
+    "colRisk": "Kiwango cha Hatari",
+    "colAgent": "Toleo la Agent",
+    "colStatus": "Hali"
+  }
+}

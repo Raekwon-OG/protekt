@@ -1,0 +1,34 @@
+{
+  "appName": "Protekt",
+  "welcome": "Bon retour",
+  "signIn": "Se connecter",
+  "email": "Email",
+  "password": "Mot de passe",
+  "remember": "Se souvenir de moi",
+  "orContinueWith": "OU CONTINUER AVEC",
+  "dontHaveAccount": "Vous n'avez pas de compte ? Inscrivez-vous",
+  "features": {
+    "headline": "Sécurité d'entreprise pour les entreprises africaines",
+    "sub": "Protégez vos actifs numériques avec une détection des menaces alimentée par l'IA et des opérations de sécurité 24/7.",
+    "a": "Protection avancée contre les menaces",
+    "b": "Conçu pour l'Afrique",
+    "c": "Collaboration d'équipe"
+  },
+  "nav": { "dashboard": "Tableau de bord", "emailSecurity": "Sécurité Email", "devices": "Appareils", "alerts": "Alertes", "scans": "Analyses & Menaces", "backups": "Sauvegardes", "compliance": "Conformité", "activityLog": "Journal d'activité" },
+  "sidebar": { "status": "Tous les systèmes opérationnels", "lastScan": "Dernier scan : il y a 2 minutes" },
+  "dashboard": { "title": "Tableau de bord", "subtitle": "Bon retour ! Voici ce qui se passe aujourd'hui.", "threatActivity": "Activité des menaces (24h)", "recentActivity": "Activité récente" },
+  "stats": { "devicesOnline": "Appareils en ligne", "activeAlerts": "Alertes actives", "backupsToday": "Sauvegardes aujourd'hui", "complianceScore": "Score de conformité" },
+  "recent": { "backup": "Sauvegarde terminée pour SERVER-DB-01", "ago2min": "il y a 2 minutes", "highCpu": "Utilisation élevée du CPU détectée sur LAPTOP-DEV-05", "ago15min": "il y a 15 minutes", "failedLogin": "Tentative de connexion échouée depuis une IP inconnue", "ago32min": "il y a 32 minutes", "update": "Mise à jour disponible pour 12 appareils", "ago1hour": "il y a 1 heure", "emailScan": "Analyse d'email terminée - 245 messages analysés", "ago2hours": "il y a 2 heures" },
+  "actions": { "addDevice": "Ajouter un appareil", "addDeviceSub": "Installer l'agent et commencer la surveillance", "runScan": "Lancer l'analyse de sécurité", "runScanSub": "Analyser tous les appareils pour les vulnérabilités", "createBackup": "Créer une sauvegarde", "createBackupSub": "Sauvegarder les systèmes critiques maintenant" },
+  "emailPage": { "title": "Sécurité Email", "subtitle": "Traitement des emails entrants, vérification des liens et journaux d'analyse." },
+  "devices": {
+    "subtitle": "Surveillez et gérez tous les appareils connectés",
+    "addDevice": "Ajouter un appareil",
+    "colName": "Nom de l'appareil",
+    "colType": "Type",
+    "colLastSeen": "Dernière activité",
+    "colRisk": "Niveau de risque",
+    "colAgent": "Version de l'agent",
+    "colStatus": "Statut"
+  }
+}

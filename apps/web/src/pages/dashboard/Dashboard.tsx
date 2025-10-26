@@ -1,5 +1,6 @@
 import React from 'react';
 import StatsCard from '../../components/StatsCard';
+import { useTranslation } from 'react-i18next';
 
 const DummyAreaChart: React.FC = () => {
   // static SVG area chart to match the look in screenshot
@@ -69,48 +70,50 @@ const RecentActivityItem: React.FC<{ color: string; text: string; when: string }
 );
 
 const Dashboard: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="page-content">
       <header className="page-header">
-        <h1>Dashboard</h1>
-        <p className="subtitle">Welcome back! Here's what's happening with your security today.</p>
+        <h1>{t('dashboard.title')}</h1>
+        <p className="subtitle">{t('dashboard.subtitle')}</p>
       </header>
 
       <section className="stats-grid" style={{ marginBottom: 22 }}>
-        <StatsCard title="Devices Online" value="142" />
-        <StatsCard title="Active Alerts" value="8" variant="danger" />
-        <StatsCard title="Backups Today" value="24" />
-        <StatsCard title="Compliance Score" value="94%" variant="success" />
+        <StatsCard title={t('stats.devicesOnline')} value="142" />
+        <StatsCard title={t('stats.activeAlerts')} value="8" variant="danger" />
+        <StatsCard title={t('stats.backupsToday')} value="24" />
+        <StatsCard title={t('stats.complianceScore')} value="94%" variant="success" />
       </section>
 
       <section className="panels-grid" style={{ marginBottom: 22 }}>
         <div className="panel">
-          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Threat Activity (24h)</div>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>{t('dashboard.threatActivity')}</div>
           <DummyAreaChart />
         </div>
 
         <div className="panel">
-          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Recent Activity</div>
-          <RecentActivityItem color="#10b981" text="Backup completed for SERVER-DB-01" when="2 minutes ago" />
-          <RecentActivityItem color="#f59e0b" text="High CPU usage detected on LAPTOP-DEV-05" when="15 minutes ago" />
-          <RecentActivityItem color="#ef4444" text="Failed login attempt from unknown IP" when="32 minutes ago" />
-          <RecentActivityItem color="#3b82f6" text="System update available for 12 devices" when="1 hour ago" />
-          <RecentActivityItem color="#10b981" text="Email scan completed - 245 messages scanned" when="2 hours ago" />
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>{t('dashboard.recentActivity')}</div>
+          <RecentActivityItem color="#10b981" text={t('recent.backup')} when={t('recent.ago2min')} />
+          <RecentActivityItem color="#f59e0b" text={t('recent.highCpu')} when={t('recent.ago15min')} />
+          <RecentActivityItem color="#ef4444" text={t('recent.failedLogin')} when={t('recent.ago32min')} />
+          <RecentActivityItem color="#3b82f6" text={t('recent.update')} when={t('recent.ago1hour')} />
+          <RecentActivityItem color="#10b981" text={t('recent.emailScan')} when={t('recent.ago2hours')} />
         </div>
       </section>
 
       <section className="action-cards">
         <div className="action-card">
-          <div style={{ fontSize: 16, fontWeight: 700 }}>Add New Device</div>
-          <div className="muted small">Install agent and start monitoring</div>
+          <div style={{ fontSize: 16, fontWeight: 700 }}>{t('actions.addDevice')}</div>
+          <div className="muted small">{t('actions.addDeviceSub')}</div>
         </div>
         <div className="action-card">
-          <div style={{ fontSize: 16, fontWeight: 700 }}>Run Security Scan</div>
-          <div className="muted small">Scan all devices for vulnerabilities</div>
+          <div style={{ fontSize: 16, fontWeight: 700 }}>{t('actions.runScan')}</div>
+          <div className="muted small">{t('actions.runScanSub')}</div>
         </div>
         <div className="action-card">
-          <div style={{ fontSize: 16, fontWeight: 700 }}>Create Backup</div>
-          <div className="muted small">Backup critical systems now</div>
+          <div style={{ fontSize: 16, fontWeight: 700 }}>{t('actions.createBackup')}</div>
+          <div className="muted small">{t('actions.createBackupSub')}</div>
         </div>
       </section>
     </div>

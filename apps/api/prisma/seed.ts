@@ -1,11 +1,11 @@
 // filepath: apps/api/prisma/seed.ts
 /**
  * Seed script for Protekt demo data.
- * Creates a demo org and two demo users (ADMIN and MEMBER).
+ * Creates a demo org, demo users and sample devices (idempotent).
  * Run:
- *   pnpm run seed
+ *   pnpm --filter api run seed
  * or
- *   npx prisma db seed
+ *   (from apps/api) pnpm run seed
  *
  * NOTE: printing plaintext passwords is for local/dev testing only.
  */
@@ -55,6 +55,58 @@ async function main() {
     console.log(`  password: ${u.password}`);
     console.log(`  role: ${user.role}`);
     console.log(`  orgId: ${user.orgId}`);
+  }
+
+  // --- devices seed (idempotent) ---
+  const demoDevices = [
+    {
+      name: 'SERVER-DB-01',
+      type: 'Server',
+      orgId: org.id,
+      status: 'Online',
+      agentVersion: '2.4.1',
+      risk: 'Low',
+    },
+    {
+      name: 'LAPTOP-DEV-05',
+      type: 'Laptop',
+      orgId: org.id,
+      status: 'Online',
+      agentVersion: '2.4.0',
+      risk: 'Medium',
+    },
+    {
+      name: 'WORKSTATION-HR-12',
+      type: 'Desktop',
+      orgId: org.id,
+      status: 'Offline',
+      agentVersion: '2.4.1',
+      risk: 'Low',
+    },
+  ];
+
+  try {
+    // remove any existing demo devices for this org (keeps seed idempotent)
+    await prisma.device.deleteMany({ where: { orgId: org.id } });
+    console.log('Cleared existing demo devices for org:', org.id);
+  } catch (err) {
+    console.warn('Could not delete existing devices (safe):', (err as any).message || err);
+  }
+
+  try {
+    await prisma.device.createMany({ data: demoDevices });
+    console.log('Seeded demo devices for org:', org.id);
+  } catch (err) {
+    // fallback to individual creates if createMany fails
+    console.warn('createMany failed, falling back to individual creates:', (err as any).message || err);
+    for (const d of demoDevices) {
+      try {
+        await prisma.device.create({ data: d });
+      } catch (e) {
+        console.warn('Skipping device create (safe):', (e as any).message || e);
+      }
+    }
+    console.log('Device seeding attempted (fallback).');
   }
 }
 

@@ -10,6 +10,7 @@ import authRoutes from './routes/auth.routes';
 import orgsRoutes from './routes/orgs.routes';
 import securityRoutes from './routes/security.routes';
 import healthRoutes from './routes/health.routes';
+import devicesRoutes from './routes/devices.routes';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/orgs', orgsRoutes);
 app.use('/api/security', securityRoutes);
 app.use('/api/health', healthRoutes);
+app.use('/api/devices', devicesRoutes);
 
 // Basic 404
 app.use((_req, res) => {

@@ -36,7 +36,7 @@ const Devices: React.FC = () => {
   const fetchDevices = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/devices`);
+      const res = await fetch(`${API_URL}/api/devices`);
       if (!res.ok) throw new Error('No api');
       const json = await res.json();
       if (Array.isArray(json)) setDevices(json);

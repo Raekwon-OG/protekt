@@ -22,7 +22,7 @@ const InboundEmailLog: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const resp = await fetch(`${API_URL}/security/email-scan-logs`);
+      const resp = await fetch(`${API_URL}/api/security/email-scan-logs`);
       if (!resp.ok) throw new Error(`Failed to load logs (${resp.status})`);
       const data = await resp.json();
       setLogs(Array.isArray(data) ? data : []);

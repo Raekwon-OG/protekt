@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch(`${API_URL}/auth/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+      await fetch(`${API_URL}/api/auth/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
     } catch {}
     localStorage.removeItem('protekt_token');
     setToken(null);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AddDeviceModal from '../../components/AddDeviceModal';
+const API_URL = import.meta.env.VITE_API_URL;
 
 type Device = {
   id: string;
@@ -35,7 +36,7 @@ const Devices: React.FC = () => {
   const fetchDevices = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/devices');
+      const res = await fetch(`${API_URL}/devices`);
       if (!res.ok) throw new Error('No api');
       const json = await res.json();
       if (Array.isArray(json)) setDevices(json);

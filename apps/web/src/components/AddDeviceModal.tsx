@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const API_URL = import.meta.env.VITE_API_URL;
 
 type Props = {
   onClose: () => void;
@@ -29,7 +30,7 @@ const AddDeviceModal: React.FC<Props> = ({ onClose, onCreated }) => {
     setSaving(true);
     try {
       const token = localStorage.getItem('protekt_token');
-      const res = await fetch('/api/devices', {
+      const res = await fetch(`${API_URL}/devices`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
         body: JSON.stringify({ name, type }),

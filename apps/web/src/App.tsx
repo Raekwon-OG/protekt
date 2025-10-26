@@ -8,6 +8,7 @@ import Landing from './pages/landing/Landing';
 import './styles/globals.css';
 import './i18n';
 import { useTranslation } from 'react-i18next';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const App: React.FC = () => {
   const [page, setPage] = useState<'dashboard' | 'email-security' | 'devices'>('dashboard');
@@ -26,7 +27,7 @@ const App: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+      await fetch(`${API_URL}/auth/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
     } catch {}
     localStorage.removeItem('protekt_token');
     setToken(null);

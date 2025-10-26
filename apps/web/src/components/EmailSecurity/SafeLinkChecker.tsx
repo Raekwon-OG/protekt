@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const API_URL = import.meta.env.VITE_API_URL;
 
 type ScanResult = {
   url: string;
@@ -25,7 +26,7 @@ const SafeLinkChecker: React.FC = () => {
     try {
       // normalize URL if scheme missing (server also does this)
       const payload = { url: trimmed };
-      const resp = await fetch('/api/security/scan-url', {
+      const resp = await fetch(`${API_URL}/security/scan-url`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

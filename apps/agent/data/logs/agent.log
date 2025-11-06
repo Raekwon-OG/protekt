@@ -2554,3 +2554,186 @@
 2025-10-25 09:29:23,135 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (97.9%)
 2025-10-25 09:29:54,178 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (119.0%)
 2025-10-25 09:32:37,685 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:33:18,120 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: Cursor.exe (101.9%)
+2025-10-25 09:36:38,045 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 09:36:38,045 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 09:36:39,101 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.015, is_anomaly=True
+2025-10-25 09:37:38,095 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 09:37:38,123 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:37:39,193 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.015, is_anomaly=True
+2025-10-25 09:38:39,284 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.015, is_anomaly=True
+2025-10-25 09:39:39,398 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.015, is_anomaly=True
+2025-10-25 09:40:39,682 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.015, is_anomaly=True
+2025-10-25 09:41:38,764 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (high)
+2025-10-25 09:41:39,874 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.027, is_anomaly=True
+2025-10-25 09:42:38,820 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 09:42:38,859 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:42:39,976 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.027, is_anomaly=True
+2025-10-25 09:43:40,057 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.027, is_anomaly=True
+2025-10-25 09:44:40,150 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.027, is_anomaly=True
+2025-10-25 09:45:40,263 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.027, is_anomaly=True
+2025-10-25 09:46:38,981 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (high)
+2025-10-25 09:47:39,042 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 09:47:39,069 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:51:39,172 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 09:51:39,172 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 09:51:41,025 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.024, is_anomaly=True
+2025-10-25 09:52:39,228 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 09:52:39,256 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 09:52:39,280 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:52:41,276 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.024, is_anomaly=True
+2025-10-25 09:56:45,435 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 09:56:45,435 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 09:56:46,191 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.024, is_anomaly=True
+2025-10-25 09:57:47,619 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.005, is_anomaly=True
+2025-10-25 09:57:47,672 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 09:57:47,697 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 09:57:47,720 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 09:58:47,717 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.005, is_anomaly=True
+2025-10-25 09:59:47,833 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.005, is_anomaly=True
+2025-10-25 10:00:47,970 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.005, is_anomaly=True
+2025-10-25 10:01:48,077 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.005, is_anomaly=True
+2025-10-25 10:01:48,104 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 10:01:48,104 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 10:02:48,195 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:02:48,219 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 10:07:48,528 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:07:48,563 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 10:07:48,643 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.008, is_anomaly=True
+2025-10-25 10:08:48,675 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 10:08:48,761 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.008, is_anomaly=True
+2025-10-25 10:09:48,866 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.008, is_anomaly=True
+2025-10-25 10:10:48,966 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.008, is_anomaly=True
+2025-10-25 10:11:49,063 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.008, is_anomaly=True
+2025-10-25 10:12:48,804 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:12:48,829 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-25 10:12:49,163 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:13:48,880 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 10:13:49,263 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:14:49,352 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:15:49,446 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:16:49,858 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:48:08,209 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:48:08,601 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.011, is_anomaly=True
+2025-10-25 10:49:09,287 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 10:49:09,287 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 10:49:09,568 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-25 10:50:09,339 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 10:50:09,670 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-25 10:51:09,773 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-25 10:52:09,888 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-25 10:53:09,439 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:53:09,987 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-25 10:54:09,638 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 10:54:09,639 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 10:54:10,324 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.034, is_anomaly=True
+2025-10-25 10:55:09,873 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 10:55:10,653 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.034, is_anomaly=True
+2025-10-25 10:56:10,788 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.034, is_anomaly=True
+2025-10-25 10:57:10,995 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.034, is_anomaly=True
+2025-10-25 10:58:10,052 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 10:58:11,163 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.034, is_anomaly=True
+2025-10-25 10:59:10,228 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 10:59:10,229 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 10:59:11,334 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-25 11:00:10,283 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-25 11:00:11,421 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-25 11:01:11,734 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-25 11:02:12,002 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-25 11:03:10,651 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:03:12,182 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-25 11:04:10,733 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 11:04:10,734 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 11:08:10,910 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:09:10,982 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 11:09:10,983 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 11:13:11,176 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:18:11,356 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:23:11,563 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:28:11,764 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:29:11,877 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-25 11:29:11,878 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-25 11:29:16,061 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.023, is_anomaly=True
+2025-10-25 11:30:16,311 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.023, is_anomaly=True
+2025-10-25 11:31:16,421 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.023, is_anomaly=True
+2025-10-25 11:32:16,623 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.023, is_anomaly=True
+2025-10-25 11:33:12,063 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-25 11:33:16,719 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.023, is_anomaly=True
+2025-10-25 11:38:12,243 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 07:51:35,669 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-26 07:51:35,670 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-26 07:51:36,530 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-26 07:52:35,716 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 07:52:35,738 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-26 07:52:36,652 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-26 07:53:36,753 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-26 07:54:36,853 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-26 07:55:36,946 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.016, is_anomaly=True
+2025-10-26 07:56:37,034 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.017, is_anomaly=True
+2025-10-26 07:57:35,855 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 07:57:37,110 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.017, is_anomaly=True
+2025-10-26 07:58:37,441 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.017, is_anomaly=True
+2025-10-26 07:59:37,654 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.017, is_anomaly=True
+2025-10-26 08:04:53,333 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 08:04:53,412 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.017, is_anomaly=True
+2025-10-26 08:05:54,110 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-26 08:05:54,110 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-26 08:05:54,570 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.020, is_anomaly=True
+2025-10-26 08:06:54,168 - protekt_agent - INFO - _send_alert:380 - Alert sent: heuristic_anomaly (medium)
+2025-10-26 08:06:54,676 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.020, is_anomaly=True
+2025-10-26 08:07:54,776 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.020, is_anomaly=True
+2025-10-26 08:08:54,874 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.020, is_anomaly=True
+2025-10-26 09:30:26,762 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.020, is_anomaly=True
+2025-10-26 09:30:27,321 - protekt_agent - ERROR - _detect_anomalies:346 - Error detecting anomalies: error return without exception set
+2025-10-26 09:33:37,854 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 09:33:37,871 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-26 09:33:37,872 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-26 09:33:38,694 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.009, is_anomaly=True
+2025-10-26 09:34:38,762 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.009, is_anomaly=True
+2025-10-26 09:35:38,834 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.009, is_anomaly=True
+2025-10-26 09:36:38,929 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.009, is_anomaly=True
+2025-10-26 09:37:39,024 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.009, is_anomaly=True
+2025-10-26 10:11:46,136 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-26 10:11:47,212 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.004, is_anomaly=True
+2025-10-26 11:35:29,921 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.021, is_anomaly=True
+2025-10-31 22:06:05,111 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-31 22:06:10,730 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: svchost.exe (115.0%)
+2025-10-31 22:06:11,329 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (82.8%)
+2025-10-31 22:06:42,818 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: svchost.exe (108.2%)
+2025-10-31 22:06:43,303 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (156.0%)
+2025-10-31 22:07:03,319 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-31 22:07:03,339 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-31 22:07:05,233 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-31 22:07:15,737 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (290.4%)
+2025-10-31 22:07:47,943 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (342.6%)
+2025-10-31 22:08:05,497 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-31 22:08:20,967 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (343.2%)
+2025-10-31 22:08:55,329 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (243.0%)
+2025-10-31 22:09:05,636 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-31 22:09:31,339 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (208.0%)
+2025-10-31 22:10:06,075 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.013, is_anomaly=True
+2025-10-31 22:10:06,078 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (180.1%)
+2025-10-31 22:10:06,082 - protekt_agent - ERROR - _detect_anomalies:346 - Error detecting anomalies: bad parameter or other API misuse
+2025-10-31 22:10:39,589 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (280.0%)
+2025-10-31 22:11:03,553 - protekt_agent - ERROR - _format_alert_message:365 - Missing template variable: 'resource_type'
+2025-10-31 22:11:03,553 - protekt_agent - INFO - _send_alert:380 - Alert sent: threshold_violation (medium)
+2025-10-31 22:11:09,382 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.036, is_anomaly=True
+2025-10-31 22:11:28,050 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (315.9%)
+2025-10-31 22:12:03,676 - protekt_agent - INFO - _send_alert:380 - Alert sent: high_resource_usage (medium)
+2025-10-31 22:12:04,126 - protekt_agent - INFO - _send_alert:380 - Alert sent: anomaly_detected (high)
+2025-10-31 22:12:15,324 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.036, is_anomaly=True
+2025-10-31 22:12:19,662 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (357.4%)
+2025-10-31 22:13:19,612 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (338.1%)
+2025-10-31 22:13:31,913 - protekt_agent - WARNING - _handle_anomaly:352 - Anomaly detected: score=-0.036, is_anomaly=True
+2025-10-31 22:14:08,983 - protekt_agent - INFO - _signal_handler:55 - Received signal 2, shutting down gracefully...
+2025-10-31 22:14:08,983 - protekt_agent - INFO - stop:106 - Stopping Protekt Agent...
+2025-10-31 22:14:13,204 - protekt_agent - WARNING - _handle_high_resource_process:372 - High CPU process: pycharm64.exe (313.0%)
+2025-10-31 22:14:14,051 - protekt_agent - INFO - stop:47 - Telemetry collection stopped
+2025-10-31 22:14:19,562 - protekt_agent - INFO - stop:251 - Process monitoring stopped
+2025-10-31 22:14:19,566 - protekt_agent - INFO - stop:449 - File watcher stopped
+2025-10-31 22:14:24,569 - protekt_agent - INFO - stop:74 - Anomaly detection stopped
+2025-10-31 22:14:29,718 - protekt_agent - INFO - stop:86 - Backup manager stopped
+2025-10-31 22:14:34,760 - protekt_agent - INFO - stop:60 - Command processor stopped
+2025-10-31 22:14:39,973 - protekt_agent - INFO - stop:173 - Alert manager stopped
+2025-10-31 22:14:45,469 - protekt_agent - INFO - stop:52 - Offline queue sync stopped
+2025-10-31 22:14:45,470 - protekt_agent - INFO - stop:132 - Protekt Agent stopped

@@ -132,6 +132,33 @@ class Database:
             )
         ''')
         
+        # Email scan logs
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS email_scan_logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                from_addr TEXT,
+                subject TEXT,
+                urls TEXT,  -- JSON array
+                verdict TEXT NOT NULL,  -- 'clean', 'phishing', 'pending', 'error'
+                phishing_detected BOOLEAN DEFAULT FALSE,
+                details TEXT,  -- JSON
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # URL scan logs
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS url_scan_logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                url TEXT NOT NULL,
+                verdict TEXT NOT NULL,  -- 'clean', 'phishing', 'pending', 'error'
+                threat_detected BOOLEAN DEFAULT FALSE,
+                reason TEXT,
+                details TEXT,  -- JSON
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
         self.connection.commit()
         self.logger.info("Database tables created successfully")
     

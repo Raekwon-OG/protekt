@@ -369,8 +369,8 @@ class BackupManager:
             self.logger.error(f"Error deleting backup: {e}")
             return False
     
-    def upload_backup(self, backup_id: str, upload_url: str) -> bool:
-        """Upload backup to cloud storage"""
+    def upload_backup(self, backup_id: str, upload_url: str = None) -> bool:
+        """Upload backup to cloud storage via backend"""
         try:
             backup_record = self._get_backup_record(backup_id)
             if not backup_record:
@@ -380,11 +380,18 @@ class BackupManager:
             if not backup_path.exists():
                 return False
             
-            # Upload using requests (would need boto3 for S3)
+            # Get upload URL from backend if not provided
+            if not upload_url:
+                upload_url = self._request_upload_url(backup_id, backup_path.stat().st_size)
+                if not upload_url:
+                    self.logger.error("Failed to get upload URL from backend")
+                    return False
+            
+            # Upload using requests
             import requests
             
             with open(backup_path, 'rb') as f:
-                response = requests.put(upload_url, data=f)
+                response = requests.put(upload_url, data=f, timeout=300)
             
             if response.status_code in [200, 201]:
                 # Mark as uploaded in database
@@ -405,3 +412,44 @@ class BackupManager:
         except Exception as e:
             self.logger.error(f"Error uploading backup: {e}")
             return False
+    
+    def _request_upload_url(self, backup_id: str, file_size: int) -> str:
+        """Request upload URL from backend"""
+        try:
+            base_url = self.config.get('saas', 'base_url')
+            api_key = self.config.get('saas', 'api_key')
+            device_id = self.config.get_device_id()
+            
+            if not base_url:
+                return None
+            
+            headers = {
+                'Content-Type': 'application/json'
+            }
+            
+            if api_key:
+                headers['Authorization'] = f'Bearer {api_key}'
+            
+            import requests
+            
+            response = requests.post(
+                f"{base_url}/api/backup/upload",
+                json={
+                    'device_id': device_id,
+                    'backup_id': backup_id,
+                    'file_size': file_size
+                },
+                headers=headers,
+                timeout=self.config.getint('saas', 'timeout', 30)
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                return data.get('upload_url')
+            else:
+                self.logger.error(f"Failed to get upload URL: {response.status_code}")
+                return None
+                
+        except Exception as e:
+            self.logger.error(f"Error requesting upload URL: {e}")
+            return None

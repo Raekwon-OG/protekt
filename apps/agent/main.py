@@ -25,6 +25,8 @@ from services.backup_manager import BackupManager
 from services.command_processor import CommandProcessor
 from services.alert_manager import AlertManager
 from services.offline_queue import OfflineQueue
+from services.email_scanner import EmailScanner
+from services.url_scanner import URLScanner
 
 class ProtektAgent:
     """Main agent class that orchestrates all monitoring and security services"""
@@ -45,6 +47,8 @@ class ProtektAgent:
         self.command_processor = CommandProcessor(self.config, self.db, self.logger)
         self.alert_manager = AlertManager(self.config, self.db, self.logger)
         self.offline_queue = OfflineQueue(self.config, self.db, self.logger)
+        self.email_scanner = EmailScanner(self.config, self.db, self.logger)
+        self.url_scanner = URLScanner(self.config, self.db, self.logger)
         
         # Setup signal handlers for graceful shutdown
         signal.signal(signal.SIGINT, self._signal_handler)
@@ -114,7 +118,9 @@ class ProtektAgent:
             self.backup_manager,
             self.command_processor,
             self.alert_manager,
-            self.offline_queue
+            self.offline_queue,
+            self.email_scanner,
+            self.url_scanner
         ]
         
         for service in services:

@@ -9,7 +9,11 @@ const requireOrg = orgScopeMiddleware;
 
 const router = Router();
 
-// All routes are authenticated + org-scoped
+// Public endpoints (no auth required for agent registration)
+router.post('/register', controller.registerDevice);
+router.post('/heartbeat', controller.heartbeat);
+
+// All other routes are authenticated + org-scoped
 router.use(requireAuth, requireOrg);
 
 router.get('/', controller.listDevices);

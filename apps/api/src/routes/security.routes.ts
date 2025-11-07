@@ -23,6 +23,39 @@ const ingestEmailSchema = z.object({
   urls: z.array(z.string()).optional(),
 });
 
+// POST /api/security/urlscan (alias for scan-url)
+router.post('/urlscan', async (req, res, next) => {
+  try {
+    const body = scanUrlSchema.parse(req.body);
+    let raw = body.url.trim();
+    if (!/^https?:\/\//i.test(raw)) raw = `http://${raw}`;
+
+    try {
+      new URL(raw);
+    } catch {
+      return res.status(400).json({ error: { message: 'Invalid URL' } });
+    }
+
+    const cached = cache.get(raw);
+    if (cached) return res.json(cached);
+
+    const resultPromise = controller.scanUrl(raw);
+    const timeoutMs = 2000;
+    const result = await Promise.race([
+      resultPromise,
+      new Promise((r) =>
+        setTimeout(() => r({ url: raw, verdict: 'pending', reason: 'Scan in progress' }), timeoutMs)
+      ),
+    ]);
+
+    if ((result as any).verdict && (result as any).verdict !== 'pending') cache.set(raw, result);
+
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // POST /api/security/scan-url
 router.post('/scan-url', async (req, res, next) => {
   try {
@@ -56,6 +89,55 @@ router.post('/scan-url', async (req, res, next) => {
     next(err);
   }
 });
+
+// POST /api/security/emailscan (alias for ingest-email)
+router.post(
+  '/emailscan',
+  upload.array('attachments'),
+  async (req, res, next) => {
+    try {
+      const body = ingestEmailSchema.parse(req.body);
+      const attachments = ((req.files as Express.Multer.File[]) || []).map((f) => ({
+        name: f.originalname,
+        buffer: f.buffer,
+      }));
+
+      const options = {
+        orgId: (req as any).user?.orgId ?? null,
+        userId: (req as any).user?.id ?? null,
+      };
+
+      const resultPromise = controller.ingestEmail(
+        {
+          ...body,
+          attachments,
+        },
+        options
+      );
+
+      const timeoutMs = 3000;
+      const result = await Promise.race([
+        resultPromise,
+        new Promise((r) =>
+          setTimeout(
+            () =>
+              r({
+                received: true,
+                scanned: 0,
+                phishingDetected: 0,
+                details: [{ reason: 'Scan in progress' }],
+              }),
+            timeoutMs
+          )
+        ),
+      ]);
+
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 // POST /api/security/ingest-email
 router.post(

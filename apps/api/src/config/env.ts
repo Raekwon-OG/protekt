@@ -14,6 +14,8 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().optional().default('*'),
   SAFE_BROWSING_KEY: z.string().optional(),
   VIRUSTOTAL_KEY: z.string().optional(),
+  SWAGGER_SERVER_URL: z.string().optional(),
+  API_URL: z.string().optional(),
   NODE_ENV: z.string().optional(),
 });
 
@@ -30,6 +32,8 @@ export const configuration = {
   JWT_SECRET: process.env.JWT_SECRET || '',
   PORT: Number(process.env.PORT || 4000),
   CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
+  SWAGGER_SERVER_URL: process.env.SWAGGER_SERVER_URL || '',
+  API_URL: process.env.API_URL || '',
   SAFE_BROWSING_KEY: process.env.SAFE_BROWSING_KEY || '',
   VIRUSTOTAL_KEY: process.env.VIRUSTOTAL_KEY || '',
   NODE_ENV: process.env.NODE_ENV || 'development',

@@ -2,9 +2,11 @@
   "appName": "Protekt",
   "welcome": "Welcome back",
   "signIn": "Sign in",
-  "email": "Email",
-  "password": "Password",
-  "remember": "Remember me",
+  "labels": {
+    "email": "Email",
+    "password": "Password",
+    "remember": "Remember me"
+  },
   "orContinueWith": "OR CONTINUE WITH",
   "dontHaveAccount": "Don't have an account? Sign up",
   "features": {

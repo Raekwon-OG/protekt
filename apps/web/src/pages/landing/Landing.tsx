@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import LoginForm from '../../components/Auth/LoginForm';
+import SignupForm from '../../components/Auth/SignupForm';
 import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 
@@ -24,6 +25,8 @@ const LangSelector: React.FC<{ onChange: (lng: string) => void; current: string 
 
 const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: string; onLangChange: (l: string) => void }> = ({ onLoginSuccess, currentLang, onLangChange }) => {
   const { t } = useTranslation();
+
+  const [mode, setMode] = React.useState<'login'|'signup'>('login');
 
   return (
     <div className="landing-root">
@@ -61,22 +64,38 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
         </div>
 
         <div className="auth-card">
-          <h2>{t('welcome')}</h2>
-          <p className="muted">{t('signIn')} to your {t('appName')} account</p>
+          <h2>{mode === 'login' ? t('welcome') : 'Create your account'}</h2>
+          <p className="muted">{mode === 'login' ? `${t('signIn')} to your ${t('appName')} account` : 'Create your account to get started'}</p>
 
           <div style={{ marginTop: 18 }}>
-            <LoginForm onSuccess={onLoginSuccess} />
+            {mode === 'login' ? (
+              <LoginForm onSuccess={onLoginSuccess} />
+            ) : (
+              <SignupForm onSuccess={onLoginSuccess} />
+            )}
+          </div>
+
+          <div style={{ marginTop: 10, textAlign: 'center' }}>
+            {mode === 'login' ? (
+              <div>
+                New here? <button aria-label="Create account" className="btn btn-link" onClick={() => setMode('signup')}>Create account</button>
+              </div>
+            ) : (
+              <div>
+                Already have an account? <button aria-label="Switch to sign in" className="btn btn-link" onClick={() => setMode('login')}>Sign in</button>
+              </div>
+            )}
           </div>
 
           <div style={{ marginTop: 18, textAlign: 'center', color: '#6b7280' }}>
             {t('orContinueWith')}
-            <div className="flex gap-2 justify-center mt-2">
-            <button className="social-btn flex items-center gap-2">
+      <div className="flex gap-2 justify-center mt-2">
+      <button aria-label="Continue with Google" className="social-btn flex items-center gap-2">
                 <FcGoogle size={20} />
                 Google
             </button>
 
-            <button className="social-btn flex items-center gap-2">
+      <button aria-label="Continue with Microsoft" className="social-btn flex items-center gap-2">
                 <FaMicrosoft size={20} color="#2F2F2F" />
                 Microsoft
             </button>

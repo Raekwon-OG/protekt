@@ -45,16 +45,19 @@ const LoginForm: React.FC<Props> = ({ onSuccess }) => {
 
   return (
     <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <label style={{ fontSize: 13, color: '#475569' }}>{t('email')}</label>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" style={{ padding: 10, borderRadius: 10, border: '1px solid #e6eef7' }} />
-      <label style={{ fontSize: 13, color: '#475569' }}>{t('password')}</label>
-      <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" style={{ padding: 10, borderRadius: 10, border: '1px solid #e6eef7' }} />
-      {error && <div style={{ color: '#ef4444', fontSize: 13 }}>{error}</div>}
+      <label className="form-label" htmlFor="login-email">{t('labels.email')}</label>
+      <input id="login-email" aria-label="email" className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" />
+
+      <label className="form-label" htmlFor="login-password">{t('labels.password')}</label>
+      <input id="login-password" aria-label="password" className="form-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" />
+
+      {error && <div role="alert" className="form-error">{error}</div>}
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 13 }}>
-          <input type="checkbox" /> <span style={{ color: '#6b7280' }}>{t('remember')}</span>
+        <label className="checkbox-area" htmlFor="remember-me">
+          <input id="remember-me" aria-label="remember me" type="checkbox" /> <span>{t('labels.remember')}</span>
         </label>
-        <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '10px 16px', borderRadius: 10 }}>
+        <button type="submit" disabled={loading} className="btn btn-primary" aria-label="Sign in">
           {loading ? '…' : t('signIn')}
         </button>
       </div>

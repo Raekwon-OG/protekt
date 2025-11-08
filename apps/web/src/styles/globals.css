@@ -6,6 +6,14 @@
   --border: #eef2f7;
   --accent: #2563eb;
 }
+/* Dark theme overrides applied when .dark is present on <html> */
+.dark {
+  --bg: #0b1220;
+  --panel: #0f1724;
+  --muted: #94a3b8;
+  --border: #0b1228;
+  --accent: #60a5fa;
+}
 * { box-sizing: border-box; }
 html,body,#root { height: 100%; }
 body {
@@ -40,7 +48,7 @@ body {
 
 /* Main and Topbar */
 .main { flex:1; display:flex; flex-direction:column; }
-.topbar { height:68px; display:flex; align-items:center; justify-content:space-between; padding: 12px 20px; background: #fff; border-bottom:1px solid var(--border); box-shadow: 0 1px 0 rgba(15,23,42,0.02); z-index: 10; }
+.topbar { height:68px; display:flex; align-items:center; justify-content:space-between; padding: 12px 20px; background: var(--panel); border-bottom:1px solid var(--border); box-shadow: 0 1px 0 rgba(15,23,42,0.02); z-index: 10; }
 .container { padding: 28px; max-width: 1200px; margin: 0 auto; width: 100%; }
 
 /* Page header */
@@ -187,6 +195,19 @@ body {
 /* add near top of file */
 .select-lang { border-radius: 8px; padding: 8px; border: 1px solid #eef2f7; }
 
+/* Topbar org dropdown styles */
+.topbar-org-dropdown { min-width: 220px; padding: 8px; border-radius: 10px; background: var(--panel); box-shadow: 0 10px 30px rgba(2,6,23,0.12); }
+.topbar-org-dropdown .dropdown-item { display:block; padding: 10px 12px; background: transparent; border: none; width:100%; text-align:left; cursor:pointer; }
+.topbar-org-dropdown .dropdown-item:hover, .topbar-org-dropdown .dropdown-item.focused { background:#f8fafc; }
+.topbar-org-dropdown .dropdown-item:focus { outline: none; }
+
+/* Modal styles for create org */
+.modal { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(2,6,23,0.45); z-index: 120; }
+.modal-content { background: #fff; border-radius: 12px; padding: 20px; width: 420px; box-shadow: 0 20px 60px rgba(2,6,23,0.18); transform-origin: center; animation: modalIn 180ms ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity:1; transform: translateY(0) scale(1); } }
+.modal .form-input { margin-bottom: 8px; }
+.modal .form-label { margin-top: 8px; }
+
 /* add these styles near the landing/hero section (or end of file) */
 
 /* Landing responsive layout */
@@ -262,7 +283,7 @@ body {
   position: absolute;
   right: 12px;
   top: 40px;
-  background: #fff;
+  background: var(--panel);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(2,6,23,0.12);
   z-index: 80;
@@ -301,3 +322,76 @@ body {
 
 /* make sure topbar doesn't duplicate the brand/logo */
 .topbar { z-index: 50; }
+
+/* Button utilities (modern UI) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.btn:active { transform: translateY(1px) scale(0.997); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.12);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn-link {
+  background: transparent;
+  padding: 6px 8px;
+  color: var(--accent);
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btn-link:hover { background: rgba(37,99,235,0.06); }
+
+/* Small responsive adjustments for auth card */
+@media (max-width: 420px) {
+  .btn { padding: 10px 12px; border-radius: 10px; }
+  .auth-card { padding: 8px; }
+}
+
+/* Form utilities */
+.form-label { font-size: 13px; color: #475569; margin-bottom: 6px; display:block; }
+.form-input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6eef7;
+  width: 100%;
+  font-size: 14px;
+  transition: box-shadow 120ms ease, border-color 120ms ease;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.10);
+}
+.form-error { color: #ef4444; font-size: 13px; margin-top: 6px; }
+.form-row { display:flex; gap:12px; align-items:center; }
+.checkbox-area { display:flex; gap:8px; align-items:center; color:#6b7280; }
+
+/* Social button restyle to match new visual language */
+.social-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid #eef2f7; background:#fff; cursor:pointer; }
+.social-btn:focus { outline: 3px solid rgba(37,99,235,0.12); }
+
+/* Focus-visible for accessibility */
+:focus-visible { outline: none; }
+.btn:focus-visible, .form-input:focus-visible, .social-btn:focus-visible {
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+  border-color: #2563eb;
+}

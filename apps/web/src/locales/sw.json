@@ -2,9 +2,11 @@
   "appName": "Protekt",
   "welcome": "Karibu tena",
   "signIn": "Ingia",
-  "email": "Barua pepe",
-  "password": "Nenosiri",
-  "remember": "Nikumbuke",
+  "labels": {
+    "email": "Barua pepe",
+    "password": "Nenosiri",
+    "remember": "Nikumbuke"
+  },
   "orContinueWith": "AU ENDELEA KWA",
   "dontHaveAccount": "Huna akaunti? Jisajili",
   "features": {

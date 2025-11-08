@@ -1,16 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 type Props = {
-  activePage?: 'dashboard' | 'email-security' | 'devices';
-  onNavigate?: (page: 'dashboard' | 'email-security' | 'devices') => void;
+  activePage?: 'dashboard' | 'email-security' | 'devices' | 'organizations' | 'backups';
+  onNavigate?: (page: 'dashboard' | 'email-security' | 'devices' | 'organizations' | 'backups') => void;
   isOpen?: boolean;
   onClose?: () => void;
 };
 
 const Sidebar: React.FC<Props> = ({ activePage = 'dashboard', onNavigate, isOpen = false, onClose }) => {
   const { t } = useTranslation();
-  const nav = (p: 'dashboard' | 'email-security' | 'devices') => () => {
+  // read global org role to conditionally hide sections
+  const role = useSelector((s: RootState) => s.org.role);
+  const nav = (p: 'dashboard' | 'email-security' | 'devices' | 'backups') => () => {
     onNavigate && onNavigate(p);
     onClose && onClose();
   };
@@ -31,11 +35,14 @@ const Sidebar: React.FC<Props> = ({ activePage = 'dashboard', onNavigate, isOpen
 
         <ul className="nav">
           <li className={`nav-item ${activePage === 'dashboard' ? 'active' : ''}`} onClick={nav('dashboard')}>{t('nav.dashboard')}</li>
-          <li className={`nav-item ${activePage === 'devices' ? 'active' : ''}`} onClick={nav('devices')}>{t('nav.devices')}</li>
+          {role === 'MEMBER' ? null : (
+            <li className={`nav-item ${activePage === 'devices' ? 'active' : ''}`} onClick={nav('devices')}>{t('nav.devices')}</li>
+          )}
+          <li className={`nav-item ${activePage === 'organizations' ? 'active' : ''}`} onClick={() => onNavigate && onNavigate('organizations')}>Organizations</li>
           <li className={`nav-item ${activePage === 'email-security' ? 'active' : ''}`} onClick={nav('email-security')}>{t('nav.emailSecurity')}</li>
           <li className="nav-item">{t('nav.alerts')}</li>
           <li className="nav-item">{t('nav.scans')}</li>
-          <li className="nav-item">{t('nav.backups')}</li>
+          <li className={`nav-item ${activePage === 'backups' ? 'active' : ''}`} onClick={nav('backups')}>{t('nav.backups')}</li>
           <li className="nav-item">{t('nav.compliance')}</li>
           <li className="nav-item">{t('nav.activityLog')}</li>
         </ul>

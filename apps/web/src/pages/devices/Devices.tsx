@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AddDeviceModal from '../../components/AddDeviceModal';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store';
 const API_URL = import.meta.env.VITE_API_URL;
 
 type Device = {
@@ -28,6 +30,7 @@ const riskColor = (r: Device['risk']) => {
 
 const Devices: React.FC = () => {
   const { t } = useTranslation();
+  const role = useSelector((s: RootState) => s.org.role);
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
@@ -49,6 +52,25 @@ const Devices: React.FC = () => {
   };
 
   useEffect(() => { fetchDevices(); }, []);
+
+  // If the current membership role is MEMBER, show a permission message
+  if (role === 'MEMBER') {
+    return (
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
+          <div>
+            <h2 style={{ margin: 0 }}>{t('nav.devices', { defaultValue: 'Devices' })}</h2>
+            <div className="muted">{t('devices.subtitle', { defaultValue: 'Monitor and manage all connected devices' })}</div>
+          </div>
+        </div>
+
+        <div className="panel" style={{ padding: 24 }}>
+          <h3 style={{ marginTop: 0 }}>Access denied</h3>
+          <p>You do not have sufficient permissions in this organization to view or manage devices. Contact an administrator to request access or switch to an organization where you have elevated permissions.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

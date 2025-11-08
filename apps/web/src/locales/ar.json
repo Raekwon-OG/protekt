@@ -2,9 +2,11 @@
   "appName": "Protekt",
   "welcome": "مرحباً بعودتك",
   "signIn": "تسجيل الدخول",
-  "email": "البريد الإلكتروني",
-  "password": "كلمة المرور",
-  "remember": "تذكرني",
+  "labels": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "remember": "تذكرني"
+  },
   "orContinueWith": "أو المتابعة عبر",
   "dontHaveAccount": "ليس لديك حساب؟ اشترك",
   "features": {

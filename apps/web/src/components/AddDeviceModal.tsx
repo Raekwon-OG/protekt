@@ -15,6 +15,7 @@ const AddDeviceModal: React.FC<Props> = ({ onClose, onCreated }) => {
   const [saving, setSaving] = useState(false);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [connection, setConnection] = useState<any | null>(null);
 
   const copy = async () => {
     try {
@@ -39,8 +40,8 @@ const AddDeviceModal: React.FC<Props> = ({ onClose, onCreated }) => {
         const json = await res.json().catch(() => null);
         throw new Error(json?.error || `Create failed (${res.status})`);
       }
-      onCreated && onCreated();
-      onClose();
+      const data = await res.json();
+      setConnection(data.connection || null);
     } catch (err: any) {
       setError(err?.message || 'Failed to add device');
     } finally {
@@ -84,10 +85,30 @@ const AddDeviceModal: React.FC<Props> = ({ onClose, onCreated }) => {
 
         {error && <div style={{ color: '#ef4444', marginTop: 10 }}>{error}</div>}
 
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 16 }}>
-          <button onClick={onClose} style={{ padding: '10px 16px', borderRadius: 10, border: '1px solid #eef2f7', background: '#fff' }}>Cancel</button>
-          <button onClick={create} disabled={saving} style={{ padding: '10px 16px', borderRadius: 10, border: 'none', background: '#2563eb', color: '#fff' }}>{saving ? 'Adding…' : 'Add Device'}</button>
-        </div>
+        {!connection ? (
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 16 }}>
+            <button onClick={onClose} style={{ padding: '10px 16px', borderRadius: 10, border: '1px solid #eef2f7', background: '#fff' }}>Cancel</button>
+            <button onClick={create} disabled={saving} style={{ padding: '10px 16px', borderRadius: 10, border: 'none', background: '#2563eb', color: '#fff' }}>{saving ? 'Adding…' : 'Add Device'}</button>
+          </div>
+        ) : (
+          <div style={{ marginTop: 12 }}>
+            <h4>Connection JSON</h4>
+            <pre style={{ background: '#f8fafc', padding: 12, borderRadius: 8, overflowX: 'auto' }}>{JSON.stringify(connection, null, 2)}</pre>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 12 }}>
+              <button onClick={() => { navigator.clipboard.writeText(JSON.stringify(connection)); }} className="btn btn-outline">Copy</button>
+              <button onClick={() => {
+                const blob = new Blob([JSON.stringify(connection, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'protekt-connection.json';
+                a.click();
+                URL.revokeObjectURL(url);
+              }} className="btn btn-primary">Download JSON</button>
+              <button onClick={() => { onCreated && onCreated(); onClose(); }} className="btn">Done</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

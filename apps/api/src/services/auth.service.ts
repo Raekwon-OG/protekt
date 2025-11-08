@@ -2,18 +2,18 @@
 /**
  * Auth service: signup & login using Prisma and JWT.
  */
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { signToken } from '../utils/jwt';
-
-const prisma = new PrismaClient();
+import { prisma } from '../utils/db';
 
 export const authService = {
-  signup: async (orgName: string, email: string, password: string) => {
-    // Create org if not exists
-    let org = await prisma.org.findFirst({ where: { name: orgName } });
-    if (!org) {
-      org = await prisma.org.create({ data: { name: orgName } });
+  signup: async (orgName: string | undefined, email: string, password: string, fullName?: string) => {
+    // If orgName is provided, always create a new organization and make the user OWNER.
+    let orgId: string | undefined = undefined;
+    if (orgName && orgName.trim().length > 0) {
+      const slug = orgName.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const org = await prisma.org.create({ data: { name: orgName.trim(), slug } });
+      orgId = org.id;
     }
 
     // Create user if not exists
@@ -24,14 +24,20 @@ export const authService = {
         data: {
           email,
           passwordHash,
-          role: 'ADMIN',
-          orgId: org.id,
+          fullName: fullName ?? undefined,
+          role: orgId ? 'OWNER' : 'USER',
+          orgId: orgId ?? undefined,
         },
       });
+
+      // If we created an org, create a membership for the user as OWNER
+      if (orgId) {
+        await prisma.membership.create({ data: { userId: user.id, orgId, role: 'OWNER' } });
+      }
     }
 
-    const token = signToken({ userId: user.id, orgId: org.id, role: user.role });
-    return { token, user: { id: user.id, email: user.email, role: user.role, orgId: org.id } };
+    const token = signToken({ userId: user.id, orgId: user.orgId ?? undefined, role: user.role });
+    return { token, user: { id: user.id, email: user.email, role: user.role, orgId: user.orgId } };
   },
 
   login: async (email: string, password: string) => {
@@ -43,7 +49,7 @@ export const authService = {
     if (!ok) {
       throw { status: 401, message: 'Invalid credentials' };
     }
-    const token = signToken({ userId: user.id, orgId: user.orgId, role: user.role });
+    const token = signToken({ userId: user.id, orgId: user.orgId ?? undefined, role: user.role });
     return { token, user: { id: user.id, email: user.email, role: user.role, orgId: user.orgId } };
   },
 };

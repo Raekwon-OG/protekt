@@ -11,8 +11,10 @@ export const createDevice = async (req: Request, res: Response) => {
   const orgId = (req as any).orgId as string;
   const { name, type } = req.body;
   if (!name) return res.status(400).json({ error: 'Missing name' });
-  const device = await svc.createDeviceForOrg(orgId, { name, type });
-  res.status(201).json(device);
+  const user = (req as any).user;
+  const { device, token } = await svc.createDeviceWithToken(user.userId, orgId, { name, type });
+  const apiUrl = process.env.API_URL || `http://localhost:${process.env.PORT || 4000}`;
+  res.status(201).json({ device: { id: device.id, name: device.name, orgId: device.orgId }, connection: { deviceId: device.id, orgId: device.orgId, token, apiUrl } });
 };
 
 export const getDevice = async (req: Request, res: Response) => {
@@ -35,6 +37,12 @@ export const removeDevice = async (req: Request, res: Response) => {
   const { id } = req.params;
   const result = await svc.deleteDevice(orgId, id);
   res.json({ deleted: result.count ?? 0 });
+};
+
+// Revoke a device (set revoked=true)
+export const revokeDevice = async (orgId: string, deviceId: string) => {
+  const result = await svc.revokeDevice(orgId, deviceId);
+  return result.count > 0;
 };
 
 // Device registration endpoint (public, no auth required)

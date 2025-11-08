@@ -17,6 +17,23 @@ export const createDeviceForOrg = async (orgId: string, data: { name: string; ty
   });
 };
 
+export const createDeviceWithToken = async (createdByUserId: string, orgId: string, data: { name: string; type: string }) => {
+  const device = await prisma.device.create({
+    data: {
+      orgId,
+      name: data.name,
+      type: data.type,
+      status: 'Offline',
+    },
+  });
+
+  // Create a device-scoped token
+  const { signDeviceToken } = await import('../utils/jwt.js');
+  const token = signDeviceToken({ deviceId: device.id, orgId });
+
+  return { device, token };
+};
+
 export const getDevice = async (orgId: string, id: string) => {
   return prisma.device.findFirst({ where: { id, orgId } });
 };
@@ -93,4 +110,13 @@ export const updateDeviceHeartbeat = async (deviceId: string, telemetryData: any
       risk,
     },
   });
+};
+
+export const createTelemetry = async (deviceId: string, orgId: string, payload: any) => {
+  return prisma.deviceTelemetry.create({ data: { deviceId, orgId, payload } });
+};
+
+// Revoke a device (mark revoked = true) for the given org
+export const revokeDevice = async (orgId: string, id: string) => {
+  return prisma.device.updateMany({ where: { id, orgId }, data: { revoked: true } });
 };

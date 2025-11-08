@@ -49,6 +49,13 @@ async function main() {
       },
     });
 
+    // create membership record for this demo user
+    try {
+      await prisma.membership.create({ data: { userId: user.id, orgId: org.id, role: u.role } });
+    } catch (e) {
+      console.warn('Could not create membership (safe):', (e as any).message || e);
+    }
+
     // Log credentials for local testing only
     console.log('Created demo user:');
     console.log(`  email: ${user.email}`);

@@ -4,8 +4,8 @@
  */
 import { authService } from '../services/auth.service';
 
-export const signup = async (body: { orgName: string; email: string; password: string }) => {
-  const result = await authService.signup(body.orgName, body.email, body.password);
+export const signup = async (body: { orgName?: string; fullName?: string; email: string; password: string }) => {
+  const result = await authService.signup(body.orgName ?? undefined, body.email, body.password, body.fullName);
   return result;
 };
 

@@ -11,6 +11,7 @@ import orgsRoutes from './routes/orgs.routes';
 import securityRoutes from './routes/security.routes';
 import healthRoutes from './routes/health.routes';
 import devicesRoutes from './routes/devices.routes';
+import agentRoutes from './routes/agent.routes';
 import backupRoutes from './routes/backup.routes';
 import swaggerUi from 'swagger-ui-express';
 
@@ -103,6 +104,7 @@ app.use('/api/orgs', orgsRoutes);
 app.use('/api/security', securityRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/devices', devicesRoutes);
+app.use('/api/agent', agentRoutes);
 app.use('/api/backup', backupRoutes);
 
 // Basic 404

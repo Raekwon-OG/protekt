@@ -11,19 +11,35 @@ datasource db {
 
 model Org {
   id        String  @id @default(cuid())
-  name      String
+  name      String  @unique
+  slug      String? @unique
   createdAt DateTime @default(now())
   users     User[]
+  memberships Membership[]
 }
 
 model User {
   id           String  @id @default(cuid())
+  fullName     String?
   email        String  @unique
   passwordHash String
-  role         String  @default("MEMBER")
-  orgId        String
-  org          Org     @relation(fields: [orgId], references: [id])
+  role         String  @default("USER")
+  orgId        String?
+  org          Org?     @relation(fields: [orgId], references: [id])
+  memberships  Membership[]
   createdAt    DateTime @default(now())
+}
+
+model Membership {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  org       Org      @relation(fields: [orgId], references: [id])
+  orgId     String
+  role      String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, orgId])
 }
 
 model EmailScanLog {
@@ -51,9 +67,21 @@ model Device {
   lastSeen     DateTime? @default(now())
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+  revoked      Boolean   @default(false)
 
   // If you have an Organization/Org model, uncomment the relation below and adjust the field name
   // org        Organization @relation(fields: [orgId], references: [id])
+  @@index([orgId])
+}
+
+model DeviceTelemetry {
+  id        String   @id @default(cuid())
+  deviceId  String
+  orgId     String
+  payload   Json
+  createdAt DateTime @default(now())
+
+  @@index([deviceId])
   @@index([orgId])
 }
 

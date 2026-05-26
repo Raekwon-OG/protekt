@@ -132,11 +132,13 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
           <div style={{ marginTop: 10, textAlign: 'center' }}>
             {mode === 'login' ? (
               <div>
-                New here? <button aria-label="Create account" className="btn btn-link" onClick={() => setMode('signup')}>Create account</button>
+                <span className="auth-switch">New here?</span>{' '}
+                <button aria-label="Create account" className="btn btn-link" onClick={() => setMode('signup')}>Create account</button>
               </div>
             ) : (
               <div>
-                Already have an account? <button aria-label="Switch to sign in" className="btn btn-link" onClick={() => setMode('login')}>Sign in</button>
+                <span className="auth-switch">Already have an account?</span>{' '}
+                <button aria-label="Switch to sign in" className="btn btn-link" onClick={() => setMode('login')}>Sign in</button>
               </div>
             )}
           </div>

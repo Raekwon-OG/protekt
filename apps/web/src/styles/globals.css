@@ -239,6 +239,10 @@ body {
   display: flex;
   align-items: center;
 }
+.dark .landing-hero {
+  background: linear-gradient(180deg,#0f172a,#1e293b);
+  color: #e2e8f0;
+}
 .hero-inner { width: 100%; max-width: 620px; }
 
 .brand-row { display:flex; gap:12px; align-items:center; margin-bottom: 20px; }
@@ -260,15 +264,26 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: var(--text);
+}
+.landing-auth, .landing-auth * {
+  font-family: inherit;
 }
 .auth-top { display:flex; justify-content:space-between; align-items:center; }
 .auth-card { max-width: 420px; margin-top: 12px; }
-.social-btn { padding: 8px 12px; border-radius:8px; border:1px solid var(--border); background: var(--panel); color: var(--text); }
+.social-btn { padding: 8px 12px; border-radius:8px; border:1px solid var(--border); background: var(--panel); color: var(--text); display: inline-flex; align-items: center; gap: 8px; }
+.social-btn:hover { background: var(--panel-2); border-color: var(--border); }
+.social-btn:focus-visible { box-shadow: 0 0 0 4px rgba(37,99,235,0.16); border-color: var(--accent); }
 
 /* small footer certs */
 .auth-footer { text-align:center; color: var(--muted); margin-top: 16px; }
 .certs { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
 .cert { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid var(--border); }
+
+/* Social sign-in area */
+.social-section { margin-top: 18px; text-align: center; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; }
+.social-title { margin-bottom: 10px; }
+.social-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
 /* mobile adjustments */
 @media (max-width: 900px) {
@@ -368,6 +383,7 @@ body {
   color: var(--accent);
   font-weight: 600;
   border-radius: 8px;
+  font-family: inherit;
 }
 .btn-link:hover { background: rgba(37,99,235,0.06); }
 

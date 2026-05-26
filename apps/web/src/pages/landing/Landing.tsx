@@ -87,18 +87,18 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
             )}
           </div>
 
-          <div style={{ marginTop: 18, textAlign: 'center', color: '#6b7280' }}>
-            {t('orContinueWith')}
-      <div className="flex gap-2 justify-center mt-2">
-      <button aria-label="Continue with Google" className="social-btn flex items-center gap-2">
+          <div className="social-section">
+            <div className="social-title">{t('orContinueWith')}</div>
+            <div className="social-row">
+              <button aria-label="Continue with Google" className="social-btn">
                 <FcGoogle size={20} />
                 Google
-            </button>
+              </button>
 
-      <button aria-label="Continue with Microsoft" className="social-btn flex items-center gap-2">
-                <FaMicrosoft size={20} color="#2F2F2F" />
+              <button aria-label="Continue with Microsoft" className="social-btn">
+                <FaMicrosoft size={20} style={{ color: 'currentColor' }} />
                 Microsoft
-            </button>
+              </button>
             </div>
           </div>
         </div>

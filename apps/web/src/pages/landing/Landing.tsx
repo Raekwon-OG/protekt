@@ -25,8 +25,36 @@ const LangSelector: React.FC<{ onChange: (lng: string) => void; current: string 
 
 const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: string; onLangChange: (l: string) => void }> = ({ onLoginSuccess, currentLang, onLangChange }) => {
   const { t } = useTranslation();
+  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const [mode, setMode] = React.useState<'login'|'signup'>('login');
+
+  const openOAuthPopup = (provider: 'google' | 'microsoft') => {
+    const w = 520;
+    const h = 640;
+    const left = window.screenX + (window.outerWidth - w) / 2;
+    const top = window.screenY + (window.outerHeight - h) / 2;
+    const redirectPath = '/dashboard';
+    const url = `${apiBase}/api/auth/oauth/${provider}?redirect=${encodeURIComponent(redirectPath)}`;
+    window.open(url, `oauth_${provider}`, `width=${w},height=${h},left=${left},top=${top},noopener,noreferrer`);
+  };
+
+  React.useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      const webOrigin = window.location.origin;
+      if (event.origin !== webOrigin) return;
+      if (!event.data || typeof event.data !== 'object') return;
+      if (event.data.type === 'oauth_success') {
+        const token = event.data.token;
+        if (token) {
+          localStorage.setItem('protekt_token', token);
+          onLoginSuccess(token);
+        }
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, [onLoginSuccess]);
 
   return (
     <div className="landing-root">
@@ -90,12 +118,12 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
           <div className="social-section">
             <div className="social-title">{t('orContinueWith')}</div>
             <div className="social-row">
-              <button aria-label="Continue with Google" className="social-btn">
+              <button aria-label="Continue with Google" className="social-btn" onClick={() => openOAuthPopup('google')}>
                 <FcGoogle size={20} />
                 Google
               </button>
 
-              <button aria-label="Continue with Microsoft" className="social-btn">
+              <button aria-label="Continue with Microsoft" className="social-btn" onClick={() => openOAuthPopup('microsoft')}>
                 <FaMicrosoft size={20} style={{ color: 'currentColor' }} />
                 Microsoft
               </button>

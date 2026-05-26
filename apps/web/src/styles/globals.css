@@ -281,9 +281,14 @@ body {
 .cert { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid var(--border); }
 
 /* Social sign-in area */
-.social-section { margin-top: 18px; text-align: center; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; }
+.social-section { margin-top: 24px; text-align: center; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; }
 .social-title { margin-bottom: 10px; }
 .social-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.auth-switch-row {
+  margin-top: 18px;
+  text-align: center;
+}
 
 /* mobile adjustments */
 @media (max-width: 900px) {
@@ -388,7 +393,7 @@ body {
 .btn-link:hover { background: rgba(37,99,235,0.06); }
 
 .auth-switch {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text);
 }

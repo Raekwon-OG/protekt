@@ -129,7 +129,7 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
             )}
           </div>
 
-          <div style={{ marginTop: 10, textAlign: 'center' }}>
+          <div className="auth-switch-row">
             {mode === 'login' ? (
               <div>
                 <span className="auth-switch">New here?</span>{' '}
@@ -160,7 +160,6 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
         </div>
 
         <div className="auth-footer">
-          <div>{t('dontHaveAccount')}</div>
           <div className="certs">
             <span className="cert">ISO 27001 Certified</span>
             <span className="cert">GDPR Compliant</span>

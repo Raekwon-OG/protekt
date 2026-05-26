@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import LoginForm from '../../components/Auth/LoginForm';
 import SignupForm from '../../components/Auth/SignupForm';
+import { useToast } from '../../components/Toast';
 import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 
@@ -25,6 +26,7 @@ const LangSelector: React.FC<{ onChange: (lng: string) => void; current: string 
 
 const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: string; onLangChange: (l: string) => void }> = ({ onLoginSuccess, currentLang, onLangChange }) => {
   const { t } = useTranslation();
+  const showToast = useToast();
   const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const [mode, setMode] = React.useState<'login'|'signup'>('login');
@@ -50,6 +52,9 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
           localStorage.setItem('protekt_token', token);
           onLoginSuccess(token);
         }
+      }
+      if (event.data.type === 'oauth_error') {
+        showToast(event.data.message || 'OAuth sign-in failed', 'error');
       }
     };
     window.addEventListener('message', onMessage);

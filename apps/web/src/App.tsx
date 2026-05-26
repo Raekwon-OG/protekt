@@ -67,7 +67,11 @@ const App: React.FC = () => {
   };
 
   if (!token) {
-    return <Landing onLoginSuccess={handleLogin} currentLang={i18n.language} onLangChange={(l) => i18n.changeLanguage(l)} />;
+    return (
+      <ToastProvider>
+        <Landing onLoginSuccess={handleLogin} currentLang={i18n.language} onLangChange={(l) => i18n.changeLanguage(l)} />
+      </ToastProvider>
+    );
   }
 
   return (

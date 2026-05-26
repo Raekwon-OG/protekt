@@ -207,14 +207,13 @@ body {
 .select-lang { border-radius: 8px; padding: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
 
 /* Topbar org dropdown styles */
-.topbar-org-dropdown .dropdown-item { display:block; padding: 10px 12px; background: transparent; border: none; width:100%; text-align:left; cursor:pointer; }
+.topbar-org-dropdown .dropdown-item { display:block; padding: 10px 12px; background: transparent; border: none; width:100%; text-align:left; cursor:pointer; color: var(--text); }
 .topbar-org-dropdown { min-width: 220px; padding: 8px; border-radius: 10px; background: var(--panel); box-shadow: var(--shadow-strong); }
 .topbar-org-dropdown .dropdown-item:hover, .topbar-org-dropdown .dropdown-item.focused { background: var(--panel-2); }
 .topbar-org-dropdown .dropdown-item:focus { outline: none; }
 
 /* Modal styles for create org */
 .modal { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(2,6,23,0.45); z-index: 120; }
-.modal-content { background: #fff; border-radius: 12px; padding: 20px; width: 420px; box-shadow: 0 20px 60px rgba(2,6,23,0.18); transform-origin: center; animation: modalIn 180ms ease; }
 .modal-content { background: var(--panel); border-radius: 12px; padding: 20px; width: 420px; box-shadow: var(--shadow-strong); transform-origin: center; animation: modalIn 180ms ease; }
 @keyframes modalIn { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity:1; transform: translateY(0) scale(1); } }
 .modal .form-input { margin-bottom: 8px; }
@@ -256,7 +255,7 @@ body {
 /* auth right column */
 .landing-auth {
   width: 520px;
-  background: #fff;
+  background: var(--panel);
   padding: 36px;
   display: flex;
   flex-direction: column;
@@ -264,12 +263,12 @@ body {
 }
 .auth-top { display:flex; justify-content:space-between; align-items:center; }
 .auth-card { max-width: 420px; margin-top: 12px; }
-.social-btn { padding: 8px 12px; border-radius:8px; border:1px solid #eef2f7; background:#fff; }
+.social-btn { padding: 8px 12px; border-radius:8px; border:1px solid var(--border); background: var(--panel); color: var(--text); }
 
 /* small footer certs */
-.auth-footer { text-align:center; color:#9aa4b2; margin-top: 16px; }
+.auth-footer { text-align:center; color: var(--muted); margin-top: 16px; }
 .certs { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
-.cert { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid #eef2f7; }
+.cert { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid var(--border); }
 
 /* mobile adjustments */
 @media (max-width: 900px) {
@@ -292,7 +291,6 @@ body {
 
 /* add near other utilities */
 .action-menu {
-.action-menu {
   position: absolute;
   right: 12px;
   top: 40px;
@@ -309,8 +307,7 @@ body {
   from { opacity: 0; transform: translateY(-6px) scale(0.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.action-menu button { width: 100%; text-align: left; padding: 10px 12px; border: 0; background: transparent; cursor: pointer; }
-.action-menu button:hover { background: #f8fafc; }
+.action-menu button { width: 100%; text-align: left; padding: 10px 12px; border: 0; background: transparent; cursor: pointer; color: var(--text); }
 .action-menu button:hover { background: var(--panel-2); }
 
 /* ensure sidebar brand/logo is always visible and clearly sized */
@@ -332,7 +329,6 @@ body {
   font-weight: 700;
   flex-shrink: 0;
 }
-.brand-text { font-weight: 700; color: #0f172a; }
 .brand-text { font-weight: 700; color: var(--text-strong); }
 
 /* make sure topbar doesn't duplicate the brand/logo */
@@ -400,10 +396,10 @@ body {
 }
 .form-error { color: #ef4444; font-size: 13px; margin-top: 6px; }
 .form-row { display:flex; gap:12px; align-items:center; }
-.checkbox-area { display:flex; gap:8px; align-items:center; color:#6b7280; }
+.checkbox-area { display:flex; gap:8px; align-items:center; color: var(--muted); }
 
 /* Social button restyle to match new visual language */
-.social-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid #eef2f7; background:#fff; cursor:pointer; }
+.social-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background: var(--panel); color: var(--text); cursor:pointer; }
 .social-btn:focus { outline: 3px solid rgba(37,99,235,0.12); }
 
 /* Focus-visible for accessibility */

@@ -7,6 +7,17 @@
     "password": "Mot de passe",
     "remember": "Se souvenir de moi"
   },
+  "auth": {
+    "createAccountTitle": "Créez votre compte",
+    "createAccountSub": "Créez votre compte pour commencer",
+    "createAccount": "Créer un compte",
+    "newHere": "Nouveau ici ?",
+    "alreadyHave": "Vous avez déjà un compte ?",
+    "fullName": "Nom complet",
+    "confirmPassword": "Confirmer le mot de passe",
+    "fillRequired": "Veuillez remplir tous les champs requis",
+    "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
   "orContinueWith": "OU CONTINUER AVEC",
   "dontHaveAccount": "Vous n'avez pas de compte ? Inscrivez-vous",
   "features": {

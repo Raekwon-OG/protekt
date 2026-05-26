@@ -7,6 +7,17 @@
     "password": "Nenosiri",
     "remember": "Nikumbuke"
   },
+  "auth": {
+    "createAccountTitle": "Tengeneza akaunti yako",
+    "createAccountSub": "Tengeneza akaunti yako uanze",
+    "createAccount": "Tengeneza akaunti",
+    "newHere": "Mgeni hapa?",
+    "alreadyHave": "Tayari una akaunti?",
+    "fullName": "Jina kamili",
+    "confirmPassword": "Thibitisha nenosiri",
+    "fillRequired": "Tafadhali jaza sehemu zote zinazohitajika",
+    "passwordMismatch": "Nenosiri halifanani"
+  },
   "orContinueWith": "AU ENDELEA KWA",
   "dontHaveAccount": "Huna akaunti? Jisajili",
   "features": {

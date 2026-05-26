@@ -20,11 +20,11 @@ const SignupForm: React.FC<Props> = ({ onSuccess }) => {
     e?.preventDefault();
     setError(null);
     if (!fullName || !email || !password) {
-      setError('Please fill all required fields');
+      setError(t('auth.fillRequired'));
       return;
     }
     if (password !== confirm) {
-      setError('Passwords do not match');
+      setError(t('auth.passwordMismatch'));
       return;
     }
 
@@ -55,7 +55,7 @@ const SignupForm: React.FC<Props> = ({ onSuccess }) => {
 
   return (
     <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <label className="form-label" htmlFor="signup-fullname">{t('Full name') || 'Full Name'}</label>
+      <label className="form-label" htmlFor="signup-fullname">{t('auth.fullName')}</label>
       <input id="signup-fullname" aria-label="full name" className="form-input" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="John Doe" />
 
       <label className="form-label" htmlFor="signup-email">{t('labels.email')}</label>
@@ -64,14 +64,14 @@ const SignupForm: React.FC<Props> = ({ onSuccess }) => {
       <label className="form-label" htmlFor="signup-password">{t('labels.password')}</label>
       <input id="signup-password" aria-label="password" className="form-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" />
 
-      <label className="form-label" htmlFor="signup-confirm">Confirm password</label>
+      <label className="form-label" htmlFor="signup-confirm">{t('auth.confirmPassword')}</label>
       <input id="signup-confirm" aria-label="confirm password" className="form-input" value={confirm} onChange={(e) => setConfirm(e.target.value)} type="password" placeholder="••••••••" />
 
       {error && <div role="alert" className="form-error">{error}</div>}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button type="submit" disabled={loading} className="btn btn-primary" aria-label="Create account">
-          {loading ? '…' : 'Create account'}
+          {loading ? '…' : t('auth.createAccount')}
         </button>
       </div>
     </form>

@@ -7,6 +7,17 @@
     "password": "كلمة المرور",
     "remember": "تذكرني"
   },
+  "auth": {
+    "createAccountTitle": "أنشئ حسابك",
+    "createAccountSub": "أنشئ حسابك للبدء",
+    "createAccount": "أنشئ حساباً",
+    "newHere": "جديد هنا؟",
+    "alreadyHave": "لديك حساب بالفعل؟",
+    "fullName": "الاسم الكامل",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "fillRequired": "يرجى ملء جميع الحقول المطلوبة",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين"
+  },
   "orContinueWith": "أو المتابعة عبر",
   "dontHaveAccount": "ليس لديك حساب؟ اشترك",
   "features": {

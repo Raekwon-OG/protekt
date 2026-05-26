@@ -118,8 +118,8 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
         </div>
 
         <div className="auth-card">
-          <h2>{mode === 'login' ? t('welcome') : 'Create your account'}</h2>
-          <p className="muted">{mode === 'login' ? `${t('signIn')} to your ${t('appName')} account` : 'Create your account to get started'}</p>
+          <h2>{mode === 'login' ? t('welcome') : t('auth.createAccountTitle')}</h2>
+          <p className="muted">{mode === 'login' ? `${t('signIn')} to your ${t('appName')} account` : t('auth.createAccountSub')}</p>
 
           <div style={{ marginTop: 18 }}>
             {mode === 'login' ? (
@@ -132,13 +132,13 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
           <div className="auth-switch-row">
             {mode === 'login' ? (
               <div>
-                <span className="auth-switch">New here?</span>{' '}
-                <button aria-label="Create account" className="btn btn-link" onClick={() => setMode('signup')}>Create account</button>
+                <span className="auth-switch">{t('auth.newHere')}</span>{' '}
+                <button aria-label="Create account" className="btn btn-link" onClick={() => setMode('signup')}>{t('auth.createAccount')}</button>
               </div>
             ) : (
               <div>
-                <span className="auth-switch">Already have an account?</span>{' '}
-                <button aria-label="Switch to sign in" className="btn btn-link" onClick={() => setMode('login')}>Sign in</button>
+                <span className="auth-switch">{t('auth.alreadyHave')}</span>{' '}
+                <button aria-label="Switch to sign in" className="btn btn-link" onClick={() => setMode('login')}>{t('signIn')}</button>
               </div>
             )}
           </div>

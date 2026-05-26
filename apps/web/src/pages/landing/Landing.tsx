@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import LoginForm from '../../components/Auth/LoginForm';
 import SignupForm from '../../components/Auth/SignupForm';
 import { useToast } from '../../components/Toast';
+import useTheme from '../../lib/useTheme';
 import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 
@@ -27,6 +28,7 @@ const LangSelector: React.FC<{ onChange: (lng: string) => void; current: string 
 const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: string; onLangChange: (l: string) => void }> = ({ onLoginSuccess, currentLang, onLangChange }) => {
   const { t } = useTranslation();
   const showToast = useToast();
+  const { theme, toggle } = useTheme();
   const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const [mode, setMode] = React.useState<'login'|'signup'>('login');
@@ -93,7 +95,26 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
       <main className="landing-auth" role="main">
         <div className="auth-top">
           <div />
-          <LangSelector onChange={onLangChange} current={currentLang} />
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <LangSelector onChange={onLangChange} current={currentLang} />
+            <button
+              className="btn btn-link"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              onClick={() => toggle()}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              style={{ padding: 8, borderRadius: 999 }}
+            >
+              {theme === 'dark' ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="#fbbf24" />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M6.76 4.84l-1.8-1.79L3.17 4.83l1.79 1.8 1.8-1.79zm10.48 14.32l1.79 1.79 1.79-1.79-1.79-1.8-1.79 1.8zM12 4V1h-1v3h1zm0 19v-3h-1v3h1zM4 13H1v-1h3v1zm19 0h-3v-1h3v1zM7.05 19.66l-1.79-1.8-1.79 1.8 1.79 1.79 1.79-1.79zM17.66 6.34l1.79-1.79-1.79-1.8-1.79 1.8 1.79 1.79z" fill="currentColor"/>
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
         <div className="auth-card">

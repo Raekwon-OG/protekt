@@ -23,6 +23,10 @@ const loginSchema = z.object({
   password: z.string().min(1),
 });
 
+const googleOneTapSchema = z.object({
+  credential: z.string().min(10),
+});
+
 router.post('/signup', async (req, res, next) => {
   try {
     const body = signupSchema.parse(req.body);
@@ -42,6 +46,7 @@ router.post('/login', async (req, res, next) => {
     next(err);
   }
 });
+
 
 // OAuth helpers
 const getEnv = (key: string, fallback?: string) => (process.env[key] && process.env[key]!.trim() ? process.env[key]!.trim() : fallback);
@@ -116,6 +121,26 @@ const oauthErrorHtml = (message: string) => {
     </script>
   </body></html>`;
 };
+
+router.post('/oauth/google/onetap', async (req, res) => {
+  const clientId = getEnv('GOOGLE_OAUTH_CLIENT_ID');
+  if (!clientId) return res.status(500).json({ error: { message: 'Missing GOOGLE_OAUTH_CLIENT_ID' } });
+  try {
+    const body = googleOneTapSchema.parse(req.body);
+    const tokenInfoResp = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(body.credential)}`);
+    if (!tokenInfoResp.ok) return res.status(401).json({ error: { message: 'Invalid Google ID token' } });
+    const tokenInfo = (await tokenInfoResp.json()) as any;
+    if (tokenInfo.aud !== clientId) return res.status(401).json({ error: { message: 'Google token audience mismatch' } });
+    const emailVerified = tokenInfo.email_verified === true || tokenInfo.email_verified === 'true';
+    if (!emailVerified) return res.status(401).json({ error: { message: 'Google account not verified' } });
+    if (!tokenInfo.email) return res.status(401).json({ error: { message: 'Missing Google email' } });
+
+    const result = await authService.oauthLogin(tokenInfo.email, tokenInfo.name || undefined);
+    return res.json(result);
+  } catch (err: any) {
+    return res.status(400).json({ error: { message: err?.message || 'Google One Tap failed' } });
+  }
+});
 
 router.get('/oauth/:provider', async (req, res) => {
   const provider = (req.params.provider || '').toLowerCase();

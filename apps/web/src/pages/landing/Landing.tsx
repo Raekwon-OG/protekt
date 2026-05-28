@@ -25,13 +25,22 @@ const LangSelector: React.FC<{ onChange: (lng: string) => void; current: string 
   );
 };
 
+declare global {
+  interface Window {
+    google?: any;
+  }
+}
+
 const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: string; onLangChange: (l: string) => void }> = ({ onLoginSuccess, currentLang, onLangChange }) => {
   const { t } = useTranslation();
   const showToast = useToast();
   const { theme, toggle } = useTheme();
   const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   const [mode, setMode] = React.useState<'login'|'signup'>('login');
+  const [oneTapLoading, setOneTapLoading] = React.useState(false);
+  const oneTapInitRef = React.useRef(false);
 
   const openOAuthPopup = (provider: 'google' | 'microsoft') => {
     const w = 520;
@@ -44,18 +53,6 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
   };
 
   React.useEffect(() => {
-    // Auto-prompt OAuth once per session on landing (login mode only)
-    if (mode === 'login') {
-      try {
-        const key = 'protekt_oauth_prompted';
-        if (!sessionStorage.getItem(key)) {
-          sessionStorage.setItem(key, '1');
-          // slight delay to allow UI to paint before popup
-          setTimeout(() => openOAuthPopup('google'), 600);
-        }
-      } catch {}
-    }
-
     const onMessage = (event: MessageEvent) => {
       const webOrigin = window.location.origin;
       if (event.origin !== webOrigin) return;
@@ -73,7 +70,82 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [onLoginSuccess, mode]);
+  }, [onLoginSuccess, mode, showToast]);
+
+  React.useEffect(() => {
+    if (mode !== 'login') {
+      oneTapInitRef.current = false;
+      try {
+        window.google?.accounts?.id?.cancel?.();
+      } catch {}
+      return;
+    }
+    if (!googleClientId) return;
+
+    let cancelled = false;
+    const initOneTap = () => {
+      if (cancelled || oneTapInitRef.current) return;
+      const google = window.google;
+      if (!google?.accounts?.id) return;
+      oneTapInitRef.current = true;
+      google.accounts.id.initialize({
+        client_id: googleClientId,
+        auto_select: false,
+        cancel_on_tap_outside: true,
+        callback: async (response: any) => {
+          if (!response?.credential) return;
+          setOneTapLoading(true);
+          try {
+            const res = await fetch(`${apiBase}/api/auth/oauth/google/onetap`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ credential: response.credential }),
+            });
+            if (!res.ok) {
+              const json = await res.json().catch(() => null);
+              throw new Error(json?.error?.message || `Google sign-in failed (${res.status})`);
+            }
+            const data = await res.json();
+            const token = data.token ?? data.accessToken;
+            if (!token) throw new Error('No token returned');
+            localStorage.setItem('protekt_token', token);
+            onLoginSuccess(token);
+          } catch (err: any) {
+            showToast(err?.message || 'Google sign-in failed', 'error');
+          } finally {
+            setOneTapLoading(false);
+          }
+        },
+      });
+      google.accounts.id.prompt();
+    };
+
+    if (window.google?.accounts?.id) {
+      initOneTap();
+      return;
+    }
+
+    const existing = document.getElementById('google-identity') as HTMLScriptElement | null;
+    if (existing) {
+      existing.addEventListener('load', initOneTap, { once: true });
+      return () => existing.removeEventListener('load', initOneTap);
+    }
+
+    const script = document.createElement('script');
+    script.id = 'google-identity';
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = initOneTap;
+    document.head.appendChild(script);
+    return () => {
+      cancelled = true;
+      oneTapInitRef.current = false;
+      try {
+        window.google?.accounts?.id?.cancel?.();
+      } catch {}
+    };
+  }, [apiBase, googleClientId, mode, onLoginSuccess, showToast]);
 
   return (
     <div className="landing-root">
@@ -168,6 +240,11 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
                 Microsoft
               </button>
             </div>
+            {oneTapLoading && (
+              <div style={{ marginTop: 8, fontSize: 12, opacity: 0.7 }} aria-live="polite">
+                Verifying Google account...
+              </div>
+            )}
           </div>
         </div>
 

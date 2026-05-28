@@ -271,6 +271,28 @@ body {
 }
 .auth-top { display:flex; justify-content:space-between; align-items:center; }
 .auth-card { max-width: 420px; margin-top: 12px; }
+.auth-verifying {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: var(--text);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+}
+.auth-verifying-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2563eb;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.16);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.auth-verifying-title { font-weight: 600; font-size: 13px; }
+.auth-verifying-sub { font-size: 12px; opacity: 0.8; }
 .social-btn { padding: 8px 12px; border-radius:8px; border:1px solid var(--border); background: var(--panel); color: var(--text); display: inline-flex; align-items: center; gap: 8px; }
 .social-btn:hover { background: var(--panel-2); border-color: var(--border); }
 .social-btn:focus-visible { box-shadow: 0 0 0 4px rgba(37,99,235,0.16); border-color: var(--accent); }

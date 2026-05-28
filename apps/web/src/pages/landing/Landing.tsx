@@ -177,6 +177,15 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
       </aside>
 
       <main className="landing-auth" role="main">
+        {oneTapLoading && (
+          <div className="auth-verifying" role="status" aria-live="polite">
+            <div className="auth-verifying-dot" aria-hidden />
+            <div>
+              <div className="auth-verifying-title">Verifying Google account</div>
+              <div className="auth-verifying-sub">Please wait while we finish signing you in.</div>
+            </div>
+          </div>
+        )}
         <div className="auth-top">
           <div />
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>

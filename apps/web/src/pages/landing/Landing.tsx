@@ -44,6 +44,18 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
   };
 
   React.useEffect(() => {
+    // Auto-prompt OAuth once per session on landing (login mode only)
+    if (mode === 'login') {
+      try {
+        const key = 'protekt_oauth_prompted';
+        if (!sessionStorage.getItem(key)) {
+          sessionStorage.setItem(key, '1');
+          // slight delay to allow UI to paint before popup
+          setTimeout(() => openOAuthPopup('google'), 600);
+        }
+      } catch {}
+    }
+
     const onMessage = (event: MessageEvent) => {
       const webOrigin = window.location.origin;
       if (event.origin !== webOrigin) return;
@@ -61,7 +73,7 @@ const Landing: React.FC<{ onLoginSuccess: (token: string) => void; currentLang: 
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [onLoginSuccess]);
+  }, [onLoginSuccess, mode]);
 
   return (
     <div className="landing-root">
